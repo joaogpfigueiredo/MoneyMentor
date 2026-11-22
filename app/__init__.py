@@ -1,1 +1,1 @@
-"""Interface Streamlit: chat, fontes citadas e indicador de confiança."""
+"""Streamlit interface: chat, cited sources and confidence indicator (Checkpoint 2)."""

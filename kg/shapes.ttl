@@ -1,13 +1,3 @@
-# Regras SHACL do KG MEALHEIRO.
-#
-# A ontologia diz o que as coisas SIGNIFICAM; o SHACL diz o que os dados TÊM de cumprir
-# (mundo fechado). Cada regra corresponde a um erro típico de extração com LLM:
-#   - entidade sem nome em português                 -> EntityShape
-#   - custo/risco/supervisor ligado à coisa errada   -> ProductShape (sh:class)
-#   - supervisor inventado                           -> ProductShape (sh:in)
-#   - tema que não existe no Referencial             -> EntityShape (sh:class fl:Topic)
-#   - facto sem fonte                                -> StatementShape
-
 @prefix fl:   <https://w3id.org/mealheiro/fl#> .
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -16,7 +6,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 
-# Qualquer entidade (produto, conceito, custo, risco, direito)
 fl:EntityShape a sh:NodeShape ;
     sh:targetClass fl:Product, fl:Concept, fl:Cost, fl:Risk, fl:Right ;
     sh:property [
@@ -56,7 +45,6 @@ fl:EntityShape a sh:NodeShape ;
         sh:message "Cada entidade indica pelo menos uma página de origem."@pt ;
     ] .
 
-# Só os produtos têm custos, riscos e supervisor
 fl:ProductShape a sh:NodeShape ;
     sh:targetClass fl:Product ;
     sh:property [
@@ -75,13 +63,11 @@ fl:ProductShape a sh:NodeShape ;
         sh:message "O supervisor tem de ser o Banco de Portugal, a CMVM ou a ASF."@pt ;
     ] .
 
-# hasCost/hasRisk/regulatedBy usados a partir de algo que NÃO é produto
 fl:ProductOnlyShape a sh:NodeShape ;
     sh:targetSubjectsOf fl:hasCost, fl:hasRisk, fl:regulatedBy ;
     sh:class fl:Product ;
     sh:message "Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy."@pt .
 
-# Cada facto reificado tem de ter fonte
 fl:StatementShape a sh:NodeShape ;
     sh:targetClass rdf:Statement ;
     sh:property [ sh:path rdf:subject ;   sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;

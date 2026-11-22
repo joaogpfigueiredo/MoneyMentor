@@ -1109,8 +1109,9 @@ existe. **Têm de ser revistas por nós.**
 - **Bibliotecas principais**: `requests`, `trafilatura`, `html5lib`, `lxml` (recolha); `rdflib`,
   `pyshacl`, `SPARQLWrapper` (KG); `pydantic` (esquema); `numpy`, `faiss-cpu` (índice);
   a seguir `transformers` (mDeBERTa), `scikit-learn` (regressão), `ragas`, `streamlit`.
-- Convenções: comentários e mensagens em PT-PT, nomes de código em inglês, uma docstring de 3–5
-  linhas no topo de cada script a explicar o quê e o porquê.
+- Convenções: código em inglês e sem comentários; cada script tem uma docstring curta em inglês
+  (o texto do `--help`). Os prompts do LLM e os dados ficam em português. As explicações estão
+  neste manual e no guia. Os excertos de código neste manual são versões simplificadas e anotadas.
 
 ---
 

@@ -1,1 +1,1 @@
-"""Geração da resposta com Ollama, só a partir dos factos e passagens recuperados, com citações."""
+"""Answer generation with Ollama, grounded only on retrieved facts and passages, with citations."""

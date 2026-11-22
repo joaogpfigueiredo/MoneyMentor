@@ -1,11 +1,6 @@
-"""Números do Knowledge Graph: nós por classe, ligações por relação e entidades mais ligadas.
+"""KG numbers: nodes per class, links per relation, attributes, provenance and most-linked entities.
 
-Porquê: para mostrar (e defender) o KG precisamos de saber de cor o que lá está. Os "nós" são as
-entidades (Product, Concept, Cost, Risk, Right) mais os supervisores e os temas; as "ligações" são as
-relações da ontologia (hasCost, hasRisk, regulatedBy, relatedTo, hasTopic). Cada facto tem também um
-nó rdf:Statement com a fonte (proveniência), que aqui contamos à parte.
-
-Uso:  python -m kg.stats [--kg data/kg/kg.ttl]
+Usage: python -m kg.stats [--kg data/kg/kg.ttl]
 """
 from __future__ import annotations
 
@@ -27,28 +22,28 @@ def main() -> None:
     g = Graph().parse(args.kg)
 
     classes = Counter(str(o).split("#")[-1] for o in g.objects(None, RDF.type) if str(o).startswith(str(FL)))
-    print(f"Ficheiro: {args.kg}  ({len(g)} triplos)\n")
-    print(f"NÓS (entidades): {sum(classes.values())}")
+    print(f"File: {args.kg}  ({len(g)} triples)\n")
+    print(f"NODES (entities): {sum(classes.values())}")
     for c, n in classes.most_common():
         print(f"  fl:{c:<10} {n}")
 
-    print(f"\nLIGAÇÕES entre nós: {sum(len(list(g.subject_objects(FL[r]))) for r in RELATIONS)}")
+    print(f"\nLINKS between nodes: {sum(len(list(g.subject_objects(FL[r]))) for r in RELATIONS)}")
     for r in RELATIONS:
         print(f"  fl:{r:<12} {len(list(g.subject_objects(FL[r])))}")
-    print(f"\nATRIBUTOS: {len(list(g.subject_objects(FL.definition)))} definições (fl:definition), "
-          f"{len(list(g.subject_objects(RDFS.label)))} nomes (rdfs:label)")
+    print(f"\nATTRIBUTES: {len(list(g.subject_objects(FL.definition)))} definitions (fl:definition), "
+          f"{len(list(g.subject_objects(RDFS.label)))} names (rdfs:label)")
 
     statements = set(g.subjects(RDF.type, RDF.Statement))
     sources = {o for s in statements for o in g.objects(s, Namespace("http://www.w3.org/ns/prov#").wasDerivedFrom)}
-    print(f"PROVENIÊNCIA: {len(statements)} factos descritos por rdf:Statement, vindos de {len(sources)} páginas")
+    print(f"PROVENANCE: {len(statements)} facts described by rdf:Statement, from {len(sources)} pages")
 
-    labels = Graph().parse(ROOT / "kg" / "ontology.ttl")  # nomes dos supervisores vêm da ontologia
+    labels = Graph().parse(ROOT / "kg" / "ontology.ttl")
     degree = Counter()
     for r in RELATIONS[:4]:
         for s, o in g.subject_objects(FL[r]):
             degree[s] += 1
             degree[o] += 1
-    print("\nEntidades mais ligadas:")
+    print("\nMost-linked entities:")
     for node, n in degree.most_common(10):
         label = g.value(node, RDFS.label) or labels.value(node, RDFS.label) or str(node).rsplit("#", 1)[-1]
         print(f"  {n:>3}  {label}")

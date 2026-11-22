@@ -1,11 +1,3 @@
-# MEALHEIRO: ontologia fl: (literacia financeira do consumidor)
-#
-# Pequena de propósito: 6 classes de entidades + Topic (SKOS), 6 relações.
-# A ontologia DESCREVE o vocabulário (OWL/RDFS); quem VERIFICA os dados é o SHACL (shapes.ttl).
-#
-# Proveniência: cada facto (triplo) é também descrito por um nó rdf:Statement
-# (reificação RDF padrão) com prov:wasDerivedFrom <URL da página de origem>.
-
 @prefix fl:   <https://w3id.org/mealheiro/fl#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -20,8 +12,6 @@
     dcterms:creator "João Figueiredo", "Tiago Alves" ;
     owl:versionInfo "0.1" ;
     owl:imports <http://www.w3.org/2004/02/skos/core>, <http://www.w3.org/ns/prov-o> .
-
-# Classes
 
 fl:Entity a owl:Class ;
     rdfs:label "Entidade"@pt ;
@@ -58,8 +48,6 @@ fl:Topic a owl:Class ; rdfs:subClassOf skos:Concept ;
 [] a owl:AllDisjointClasses ;
     owl:members ( fl:Product fl:Concept fl:Cost fl:Risk fl:Right fl:Regulator ) .
 
-# Relações
-
 fl:hasCost a owl:ObjectProperty ;
     rdfs:label "tem custo"@pt ;
     rdfs:domain fl:Product ; rdfs:range fl:Cost .
@@ -85,8 +73,6 @@ fl:definition a owl:DatatypeProperty ;
     rdfs:label "definição"@pt ;
     rdfs:comment "Definição em linguagem simples, retirada da fonte (literal @pt)."@pt ;
     rdfs:domain fl:Entity ; rdfs:range rdf:langString .
-
-# Supervisores (lista fechada)
 
 fl:BancoDePortugal a fl:Regulator ;
     rdfs:label "Banco de Portugal"@pt ; skos:altLabel "BdP"@pt ;

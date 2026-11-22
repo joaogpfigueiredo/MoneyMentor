@@ -1,11 +1,8 @@
-"""Carrega a ontologia, os temas e o KG validado no Fuseki (Graph Store Protocol).
+"""Load the ontology, topics and KG into Fuseki, replacing the default graph.
 
-Substitui o grafo por omissão do dataset: correr duas vezes não duplica nada.
-
-Uso:
+Usage:
   docker compose up -d
-  python -m kg.load_fuseki                      # data/kg/kg.ttl
-  python -m kg.load_fuseki --kg data/kg/exemplo.ttl
+  python -m kg.load_fuseki
 """
 from __future__ import annotations
 
@@ -39,8 +36,8 @@ def main() -> None:
         timeout=120,
     )
     r.raise_for_status()
-    print(f"Carregados {len(g)} triplos em {args.fuseki} (HTTP {r.status_code})")
-    print(f"Testar: python -m kg.sparql \"seguro de incêndio\" --endpoint {args.fuseki}/sparql")
+    print(f"Loaded {len(g)} triples into {args.fuseki} (HTTP {r.status_code})")
+    print(f"Test: python -m kg.sparql \"seguro de incêndio\" --endpoint {args.fuseki}/sparql")
 
 
 if __name__ == "__main__":

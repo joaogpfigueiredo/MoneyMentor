@@ -1,12 +1,4 @@
-"""Peças partilhadas pelos scrapers.
-
-1. PoliteSession: faz pedidos HTTP "educados" (respeita o robots.txt, espera 1-2 s
-   entre pedidos e identifica-se com um User-Agent honesto).
-2. extract_page: usa o trafilatura para tirar o texto principal de uma página
-   (sem menus, rodapés nem cookies).
-3. guess_topic: atribui um tema grosseiro por palavras-chave (mais tarde mapeado para SKOS).
-4. JsonlWriter: escreve um registo por linha em data/raw/<fonte>.jsonl.
-"""
+"""Shared scraping helpers: polite HTTP session, text extraction, topic guess and JSONL writer."""
 from __future__ import annotations
 
 import hashlib
@@ -31,16 +23,12 @@ DATA_DIR = ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 HTML_CACHE_DIR = DATA_DIR / "html_cache"
 
-USER_AGENT = "MealheiroBot/0.1 (projeto academico Knowledge and Language, Universidade de Coimbra)"
-MIN_WORDS = 80  # páginas com menos palavras são índices/menus, não interessam
+USER_AGENT = "MealheiroBot/0.1 (Knowledge and Language academic project, University of Coimbra)"
+MIN_WORDS = 80
 
-# Sufixos de título do género " - Site PC - ASF" ou " | Banco de Portugal"
 TITLE_SUFFIX = re.compile(r"\s+[-|–]\s+(Site .*|ASF|Banco de Portugal|Todos Contam|Portal do Cliente Banc[aá]rio)$")
-# Linhas de navegação que o trafilatura às vezes deixa passar
 BOILERPLATE_LINES = {"Migalhas de pão", "Partilhar", "Imprimir", "Voltar ao topo"}
 
-# Textos que aparecem nas páginas de desafio anti-bot. Se os virmos, PARAMOS:
-# contornar estas proteções não é aceitável (nem ética nem legalmente).
 CHALLENGE_MARKERS = (
     "Just a moment...",
     "Attention Required! | Cloudflare",
@@ -50,7 +38,7 @@ CHALLENGE_MARKERS = (
 
 
 class BlockedError(Exception):
-    """O site respondeu com uma página anti-bot: não insistimos."""
+    """The site answered with an anti-bot challenge; we stop instead of bypassing it."""
 
 
 def utc_now() -> str:
@@ -58,7 +46,7 @@ def utc_now() -> str:
 
 
 class PoliteSession:
-    """Sessão HTTP que respeita o robots.txt e espaça os pedidos."""
+    """HTTP session that honours robots.txt and spaces out requests."""
 
     def __init__(self, min_delay: float = 1.0, max_delay: float = 2.0):
         self.http = requests.Session()
@@ -67,7 +55,6 @@ class PoliteSession:
         self._last_request = 0.0
         self._robots: dict[str, robotparser.RobotFileParser] = {}
 
-    # robots.txt
     def _robots_for(self, url: str) -> robotparser.RobotFileParser:
         p = urlparse(url)
         root = f"{p.scheme}://{p.netloc}"
@@ -76,9 +63,9 @@ class PoliteSession:
             try:
                 r = self.http.get(root + "/robots.txt", timeout=20)
                 if r.status_code in (401, 403):
-                    rp.disallow_all = True  # sem acesso ao robots.txt: por precaução, nada é permitido
+                    rp.disallow_all = True
                 elif r.status_code >= 400:
-                    rp.allow_all = True  # o site não tem robots.txt: tudo é permitido
+                    rp.allow_all = True
                 else:
                     rp.parse(r.text.splitlines())
             except requests.RequestException:
@@ -90,7 +77,6 @@ class PoliteSession:
     def allowed(self, url: str) -> bool:
         return self._robots_for(url).can_fetch(USER_AGENT, url)
 
-    # pedidos
     def _wait(self, url: str) -> None:
         delay = random.uniform(self.min_delay, self.max_delay)
         crawl_delay = self._robots_for(url).crawl_delay(USER_AGENT)
@@ -102,31 +88,28 @@ class PoliteSession:
         self._last_request = time.monotonic()
 
     def get(self, url: str) -> Optional[requests.Response]:
-        """Devolve a resposta (200), ou None se o robots.txt proibir ou houver erro.
-        Lança BlockedError se aparecer um desafio anti-bot."""
+        """Return the 200 response, or None if robots.txt forbids it or it fails; raise BlockedError on a challenge."""
         if not self.allowed(url):
-            print(f"  [robots.txt] proibido: {url}")
+            print(f"  [robots.txt] disallowed: {url}")
             return None
         self._wait(url)
         try:
             r = self.http.get(url, timeout=30)
         except requests.RequestException as e:
-            print(f"  [erro] {url}: {e}")
+            print(f"  [error] {url}: {e}")
             return None
         if r.status_code in (403, 429, 503) and any(m in r.text for m in CHALLENGE_MARKERS):
-            raise BlockedError(f"{urlparse(url).netloc} devolveu um desafio anti-bot (HTTP {r.status_code}).")
+            raise BlockedError(f"{urlparse(url).netloc} returned an anti-bot challenge (HTTP {r.status_code}).")
         if r.status_code != 200:
             print(f"  [HTTP {r.status_code}] {url}")
             return None
         return r
 
 
-# Cache de HTML: permite voltar a extrair texto sem voltar a pedir as páginas
 def cache_path(url: str) -> Path:
     return HTML_CACHE_DIR / (hashlib.sha1(url.encode("utf-8")).hexdigest() + ".html")
 
 
-# Extração
 BLOCK_TAGS = {"h1", "h2", "h3", "h4", "h5", "p", "li", "tr", "dt", "dd", "div", "section", "article", "br", "table", "ul", "ol"}
 
 
@@ -135,15 +118,11 @@ def _text(el) -> str:
 
 
 def main_text(html: str) -> tuple[str, str]:
-    """Plano B: texto dos blocos (títulos, parágrafos, listas, tabelas) da zona de conteúdo.
-    Usado quando o trafilatura não reconhece a estrutura da página (ex.: Portal do Cliente Bancário).
-    O html5lib lê o HTML com as mesmas regras do browser: o HTML do BdP tem tags mal fechadas e
-    o parser do lxml punha o conteúdo "dentro" do menu."""
+    """Fallback extractor: block-aware text of the content area, parsed with html5lib like a browser."""
     doc = html5lib.parse(html, treebuilder="lxml", namespaceHTMLElements=False).getroot()
     title = (doc.findtext(".//title") or "").strip()
     main = (doc.xpath("//main") or doc.xpath('//*[@role="main"]') or [None])[0]
     if main is None or len(_text(main).split()) < MIN_WORDS:
-        # No Portal do Cliente Bancário o texto fica fora do <main>: usa-se o <body> sem menus nem rodapé
         main = doc.find(".//body")
         if main is None:
             return title, ""
@@ -151,8 +130,6 @@ def main_text(html: str) -> tuple[str, str]:
     for bad in main.xpath(f".//script|.//style|.//nav|.//header|.//footer|.//form|.//button|.//*[{junk}]"):
         if bad.getparent() is not None:
             bad.getparent().remove(bad)
-    # Uma quebra de linha à volta de cada bloco (div, p, br, títulos, listas...) e depois o texto todo:
-    # assim apanha-se também texto solto dentro de <div> ou entre <br>, que o trafilatura perde
     for el in main.iter():
         if isinstance(el.tag, str) and el.tag in BLOCK_TAGS:
             el.text = "\n" + (el.text or "")
@@ -166,7 +143,7 @@ def main_text(html: str) -> tuple[str, str]:
 
 
 def extract_page(html: str, url: str) -> Optional[dict]:
-    """Texto principal e título de uma página HTML, ou None se não houver conteúdo útil."""
+    """Main text and title of an HTML page, or None if it has no useful content."""
     out = trafilatura.extract(
         html,
         url=url,
@@ -180,7 +157,6 @@ def extract_page(html: str, url: str) -> Optional[dict]:
     text, title = data.get("text") or "", data.get("title") or ""
     fallback_title, fallback = main_text(html)
     if len(fallback.split()) > 1.2 * len(text.split()):
-        # O trafilatura perdeu texto (acordeões, texto fora de <p>, página fora do <main>): usa o plano B
         title, text = title or fallback_title, fallback
     lines = [ln for ln in text.splitlines() if ln.strip() not in BOILERPLATE_LINES]
     text = "\n".join(lines).strip()
@@ -193,7 +169,7 @@ def extract_page(html: str, url: str) -> Optional[dict]:
 
 
 def extract_links(html: str, base_url: str) -> set[str]:
-    """Todos os links <a href> da página, em forma absoluta e sem #fragmento."""
+    """All <a href> links of the page, absolute and without #fragment."""
     try:
         doc = lxml.html.fromstring(html)
     except (ValueError, lxml.etree.ParserError):
@@ -206,7 +182,6 @@ def extract_links(html: str, base_url: str) -> set[str]:
     return links
 
 
-# Tema por palavras-chave. A ordem conta: ganha o primeiro tema que aparecer.
 TOPIC_KEYWORDS = [
     ("seguros", ["seguro", "sinistro", "apolice", "resseguro"]),
     ("credito", ["credito", "emprestimo", "hipoteca", "habitacao", "consolidado", "leasing", "locacao"]),
@@ -225,8 +200,7 @@ def _normalize(s: str) -> str:
 
 
 def guess_topic(url: str, title: str) -> str:
-    """Tema aproximado a partir do URL e do título. É só uma etiqueta inicial;
-    o KG usa depois os temas SKOS do Referencial de Educação Financeira."""
+    """Rough topic from the URL and title; the first matching keyword group wins."""
     hay = _normalize(unquote(url).replace("-", " ") + " " + title) + " "
     for topic, words in TOPIC_KEYWORDS:
         if any(w in hay for w in words):
@@ -234,9 +208,8 @@ def guess_topic(url: str, title: str) -> str:
     return "outro"
 
 
-# Escrita
 class JsonlWriter:
-    """Acrescenta registos a data/raw/<fonte>.jsonl e ignora URLs já guardados (para retomar)."""
+    """Append records to data/raw/<source>.jsonl, skipping URLs already saved."""
 
     def __init__(self, source: str):
         RAW_DIR.mkdir(parents=True, exist_ok=True)

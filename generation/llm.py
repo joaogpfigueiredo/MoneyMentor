@@ -1,15 +1,11 @@
-"""Chamada ao LLM local (Ollama), partilhada pelos baselines e pelo sistema final.
-
-Porquê um módulo só: os três sistemas a comparar usam o mesmo modelo e as mesmas opções,
-para que a única diferença entre eles seja o contexto que o LLM recebe (nada, texto, ou KG + texto).
-"""
+"""Shared local LLM call (Ollama), so all compared systems use the same model and options."""
 from __future__ import annotations
 
 import requests
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
 DEFAULT_MODEL = "qwen3:8b"
-ABSTAIN = "Não posso responder com segurança."  # frase fixa: torna a abstenção fácil de detetar
+ABSTAIN = "Não posso responder com segurança."
 
 
 def chat(messages: list[dict], model: str = DEFAULT_MODEL, temperature: float = 0.0,
@@ -18,7 +14,7 @@ def chat(messages: list[dict], model: str = DEFAULT_MODEL, temperature: float = 
         "model": model,
         "messages": messages,
         "stream": False,
-        "think": False,  # Qwen3: resposta direta, sem "raciocínio" escondido
+        "think": False,
         "options": {"temperature": temperature, "num_ctx": num_ctx, "num_predict": num_predict},
     })
     resp.raise_for_status()

@@ -1,1 +1,1 @@
-"""Divisão em pedaços (~300 palavras), embeddings BGE-M3, índice FAISS; entity linking e SPARQL a 1 salto."""
+"""Text chunking (~300 words), BGE-M3 embeddings, FAISS index; entity linking and one-hop SPARQL."""

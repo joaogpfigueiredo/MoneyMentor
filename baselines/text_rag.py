@@ -1,9 +1,4 @@
-"""Baseline (b): RAG só com texto (réplica simples de Eleuterio et al., SLATE 2025).
-
-Porquê: é a abordagem habitual. O LLM recebe as 5 passagens do corpus mais parecidas com a
-pergunta (BGE-M3 + FAISS, retrieval/text_index.py), responde só com base nelas e cita-as com [n].
-O nosso sistema (c) acrescenta os factos do KG a isto, por isso a comparação (b) vs (c) mede o KG.
-"""
+"""Baseline (b): text-only RAG; the LLM answers only from the top-5 passages and cites them as [n]."""
 from __future__ import annotations
 
 from generation.llm import ABSTAIN, chat

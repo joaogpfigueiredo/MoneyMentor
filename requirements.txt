@@ -1,31 +1,22 @@
-# MEALHEIRO: dependências por passo. Python >= 3.9 (recomendado 3.11).
-# Instalar tudo:   pip install -r requirements.txt
-# Só o passo 1:    pip install requests trafilatura
-
-# 1. Scraping
 requests>=2.31
 trafilatura>=1.12
-html5lib>=1.1       # lê HTML mal formado como o browser (plano B da extração de texto)
-pypdf>=4.0          # PDFs do Todos Contam (os PDFs não estão bloqueados)
-cryptography>=42    # alguns PDFs oficiais têm encriptação de permissões
+html5lib>=1.1
+pypdf>=4.0
+cryptography>=42
 
-# 3. Knowledge Graph (ontologia, extração, validação, SPARQL)
 rdflib>=7.0
 pyshacl>=0.26
 SPARQLWrapper>=2.0
 pydantic>=2.6
 
-# 4. Recuperação de texto (BGE-M3 + FAISS) e geração (Ollama)
 sentence-transformers>=3.0
 faiss-cpu>=1.8
 numpy>=1.26
 ollama>=0.3
 
-# 5. Incerteza: NLI (mDeBERTa-XNLI) e calibração
 transformers>=4.44
 scikit-learn>=1.4
 
-# 6. Avaliação e interface
 pandas>=2.1
 ragas>=0.2
 streamlit>=1.38

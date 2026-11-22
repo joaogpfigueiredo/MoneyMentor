@@ -1,1 +1,1 @@
-"""Baselines: (a) só o LLM; (b) RAG só com texto (réplica de Eleuterio et al., SLATE 2025)."""
+"""Baselines: (a) LLM only; (b) text-only RAG (replica of Eleuterio et al., SLATE 2025)."""

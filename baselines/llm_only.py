@@ -1,8 +1,4 @@
-"""Baseline (a): só o LLM, sem qualquer documento.
-
-Porquê: mostra o que o modelo "sabe" sozinho. Serve de limite inferior: se o RAG e o KG não
-melhorarem isto, não valem a pena. A abstenção é só por instrução no prompt.
-"""
+"""Baseline (a): the LLM alone, no documents; abstention only by prompt instruction."""
 from __future__ import annotations
 
 from generation.llm import ABSTAIN, chat

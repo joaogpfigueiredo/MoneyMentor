@@ -1,17 +1,9 @@
-"""Extração de factos com um LLM local (Ollama), restrita à ontologia.
+"""Extract ontology-constrained facts from data/raw/<source>.jsonl with a local LLM (Ollama).
 
-Para cada página de data/raw/<fonte>.jsonl:
-  1. Divide o texto em pedaços de ~400 palavras (um modelo de 8B extrai melhor de textos curtos).
-  2. Envia ao LLM um prompt com a ontologia (classes, relações, temas) e um exemplo.
-  3. Passa ao Ollama o JSON Schema do kg/schema.py: o modelo só pode gerar JSON com
-     aquela forma (structured outputs). Temperatura 0 para ser reprodutível.
-  4. Valida com Pydantic; se falhar, tenta mais uma vez e mostra ao modelo o erro.
-  5. Grava em data/kg/extractions/<fonte>.jsonl. Depois corre-se:  python -m kg.build_kg
-
-Uso:
-  python -m kg.extract --source asf --limit 3           # testar com 3 páginas
-  python -m kg.extract --source asf --match "seguro de"  # só páginas com isto no título
-  python -m kg.extract --source asf --model qwen3:8b    # tudo (retoma onde parou)
+Usage:
+  python -m kg.extract --source asf --limit 3
+  python -m kg.extract --source asf --match "seguro de"
+  python -m kg.extract --source asf --model qwen3:8b
 """
 from __future__ import annotations
 
@@ -67,7 +59,6 @@ REGRAS:
 7. Ignora menus, avisos de cookies, contactos e notícias institucionais.
 8. Se o excerto não tiver conhecimento útil, devolve {"entities": [], "relations": []}."""
 
-# Exemplo (anotado à mão) que mostra ao modelo o formato e o nível de detalhe pretendidos
 EXAMPLE_TEXT = (
     "O seguro multirriscos oferece um conjunto de coberturas facultativas de danos no imóvel ou no seu "
     "recheio, podendo também incluir uma cobertura de responsabilidade civil. O prémio é calculado em "
@@ -93,7 +84,7 @@ EXAMPLE_JSON = {
 
 
 def chunk_text(text: str, max_words: int = CHUNK_WORDS) -> list[str]:
-    """Junta parágrafos inteiros até ~max_words palavras (não corta frases a meio)."""
+    """Group whole paragraphs into chunks of about max_words words."""
     chunks, current, n = [], [], 0
     for para in [p.strip() for p in text.split("\n") if p.strip()]:
         words = len(para.split())
@@ -116,18 +107,17 @@ def build_messages(title: str, chunk: str) -> list[dict]:
     ]
 
 
-NUM_CTX = 4096  # prompt (~1500 tokens) + resposta; menos contexto = menos memória na GPU
-NUM_PREDICT = 2048  # máximo de tokens da resposta
+NUM_CTX = 4096
+NUM_PREDICT = 2048
 
 
 def call_llm(messages: list[dict], model: str) -> str:
     resp = requests.post(OLLAMA_URL, timeout=600, json={
         "model": model,
         "messages": messages,
-        "format": Extraction.model_json_schema(),  # restringe a geração ao esquema da ontologia
+        "format": Extraction.model_json_schema(),
         "stream": False,
-        "think": False,                            # Qwen3: sem "raciocínio" escondido, resposta direta
-        # num_predict limita a resposta: evita que o modelo entre em ciclo a repetir entidades
+        "think": False,
         "options": {"temperature": 0, "num_ctx": NUM_CTX, "num_predict": NUM_PREDICT},
     })
     resp.raise_for_status()
@@ -140,15 +130,14 @@ def extract_chunk(title: str, chunk: str, model: str, retries: int = 1) -> Optio
         try:
             raw = call_llm(messages, model)
         except requests.exceptions.Timeout:
-            print("    [timeout] o modelo demorou demasiado; salto este pedaço", flush=True)
+            print("    [timeout] the model took too long; skipping this chunk", flush=True)
             return None
         try:
             return Extraction.model_validate_json(raw)
         except ValidationError as err:
             if attempt == retries:
-                print(f"    [inválido] desisto deste pedaço: {err.error_count()} erro(s)")
+                print(f"    [invalid] giving up on this chunk: {err.error_count()} error(s)")
                 return None
-            # Mostra o erro ao modelo e pede outra vez
             messages += [
                 {"role": "assistant", "content": raw},
                 {"role": "user", "content": f"O JSON não é válido: {err}. Corrige e devolve só o JSON."},
@@ -158,11 +147,11 @@ def extract_chunk(title: str, chunk: str, model: str, retries: int = 1) -> Optio
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--source", required=True, help="nome do ficheiro em data/raw (ex.: asf)")
+    ap.add_argument("--source", required=True, help="file name in data/raw (e.g. asf)")
     ap.add_argument("--model", default="qwen3:8b")
-    ap.add_argument("--limit", type=int, default=None, help="só as primeiras N páginas (para testar)")
-    ap.add_argument("--out", type=Path, default=None, help="ficheiro de saída (por omissão data/kg/extractions/<fonte>.jsonl)")
-    ap.add_argument("--match", default=None, help="só páginas cujo título contenha este texto")
+    ap.add_argument("--limit", type=int, default=None, help="only the first N pages (for testing)")
+    ap.add_argument("--out", type=Path, default=None, help="output file (default data/kg/extractions/<source>.jsonl)")
+    ap.add_argument("--match", default=None, help="only pages whose title contains this text")
     args = ap.parse_args()
 
     pages = [json.loads(l) for l in (RAW_DIR / f"{args.source}.jsonl").open(encoding="utf-8") if l.strip()]
@@ -182,7 +171,7 @@ def main() -> None:
     with out_path.open("a", encoding="utf-8") as out:
         for i, page in enumerate(pages, 1):
             chunks = chunk_text(page["text"])
-            print(f"[{i}/{len(pages)}] {page['title'][:60]} ({len(chunks)} pedaço(s))", flush=True)
+            print(f"[{i}/{len(pages)}] {page['title'][:60]} ({len(chunks)} chunk(s))", flush=True)
             for c, chunk in enumerate(chunks):
                 if (page["url"], c) in done:
                     continue
@@ -195,8 +184,8 @@ def main() -> None:
                     "extraction": ex.model_dump(),
                 }, ensure_ascii=False) + "\n")
                 out.flush()
-                print(f"    pedaço {c}: {len(ex.entities)} entidades, {len(ex.relations)} relações ({time.time() - t0:.0f}s)", flush=True)
-    print(f"\nEscrito: {out_path}\nA seguir:  python -m kg.build_kg")
+                print(f"    chunk {c}: {len(ex.entities)} entities, {len(ex.relations)} relations ({time.time() - t0:.0f}s)", flush=True)
+    print(f"\nWritten: {out_path}\nNext: python -m kg.build_kg")
 
 
 if __name__ == "__main__":

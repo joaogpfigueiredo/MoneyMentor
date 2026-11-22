@@ -12,7 +12,7 @@ Documentos de referência em `docs/`: enunciado (`KL_Project_2026_2027.pdf`), `L
 
 ## Regra principal: simplicidade
 
-- Tudo tem de ser fácil de explicar e defender na apresentação. Código curto, comentado em PT-PT.
+- Tudo tem de ser fácil de explicar e defender na apresentação. Código curto e legível, em inglês, sem comentários.
 - Não treinamos redes neuronais. Nada de SubgraphRAG nem conformal prediction.
 - O bot tem **só duas saídas**: (1) responder com citação; (2) abster-se e indicar a fonte oficial.
 - Preferir uma solução simples e explicável a uma mais "inteligente".
@@ -70,8 +70,11 @@ Documentos de referência em `docs/`: enunciado (`KL_Project_2026_2027.pdf`), `L
 ## Convenções
 - Python ≥ 3.9 (venv em `.venv/`). Cada pasta de topo é um pacote; corre-se com `python -m pasta.modulo`.
 - Dados intermédios em `data/`. `data/html_cache/` e `data/manual_html/` não vão para o git.
-- Comentários e mensagens em PT-PT; nomes de variáveis e funções em inglês.
-- Cada script tem no topo uma docstring que explica *o quê* e *porquê* em 3 a 5 linhas, para a apresentação.
+- Código todo em inglês e **sem comentários** (`#`), incluindo os .ttl, o docker-compose e o requirements (decisão de 22/11).
+  Cada script tem só uma docstring curta em inglês (1–2 linhas e o uso), que serve de texto do `--help`.
+  As explicações para a apresentação ficam em `docs/GUIA.md` e `docs/MANUAL.md`, não no código.
+- Ficam em português só os **dados**: prompts do LLM, frase de abstenção, descrições do esquema Pydantic
+  (vão para o LLM), palavras-chave dos temas, marcadores anti-bot e labels/comentários RDF (`@pt`).
 
 ## Decisões tomadas
 - Namespaces: `fl:` = `https://w3id.org/mealheiro/fl#` (ontologia), `kg:` = `https://w3id.org/mealheiro/kg/` (dados).

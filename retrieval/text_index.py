@@ -1,13 +1,8 @@
-"""Índice de texto: pedaços de ~300 palavras, embeddings BGE-M3 e pesquisa com FAISS.
+"""Text index: ~300-word chunks, BGE-M3 embeddings (via Ollama) and exact cosine search with FAISS.
 
-Porquê: o baseline (b) e o nosso sistema precisam de encontrar as 3–5 passagens do corpus mais
-parecidas com a pergunta. Cada página de data/raw/*.jsonl é dividida em pedaços (parágrafos inteiros),
-cada pedaço vira um vetor com o BGE-M3 (modelo multilingue, corre no Ollama) e o FAISS devolve
-os vetores mais próximos do vetor da pergunta (produto interno de vetores normalizados = cosseno).
-
-Uso:
+Usage:
   ollama pull bge-m3
-  python -m retrieval.text_index build                 # cria data/index/
+  python -m retrieval.text_index build
   python -m retrieval.text_index search "O que é a TANB?"
 """
 from __future__ import annotations
@@ -30,7 +25,7 @@ CHUNK_WORDS = 300
 
 
 def embed(texts: list[str], batch: int = 16) -> np.ndarray:
-    """Vetores BGE-M3 (normalizados) para uma lista de textos, pedidos ao Ollama em lotes."""
+    """L2-normalised BGE-M3 vectors for a list of texts, requested from Ollama in batches."""
     out = []
     for i in range(0, len(texts), batch):
         resp = requests.post(EMBED_URL, json={"model": EMBED_MODEL, "input": texts[i:i + batch]}, timeout=600)
@@ -42,7 +37,7 @@ def embed(texts: list[str], batch: int = 16) -> np.ndarray:
 
 
 def chunk_page(text: str, max_words: int = CHUNK_WORDS) -> list[str]:
-    """Junta parágrafos inteiros até ~max_words palavras (não corta frases a meio)."""
+    """Group whole paragraphs into chunks of about max_words words."""
     chunks, current, n = [], [], 0
     for para in [p.strip() for p in text.split("\n") if p.strip()]:
         words = len(para.split())
@@ -64,21 +59,20 @@ def build() -> None:
             for i, text in enumerate(chunk_page(page["text"])):
                 chunks.append({"id": len(chunks), "url": page["url"], "title": page["title"],
                                "source": page["source"], "chunk": i, "text": text})
-    print(f"{len(chunks)} pedaços de {len({c['url'] for c in chunks})} páginas; a calcular embeddings...", flush=True)
-    # O título entra no texto do embedding: ajuda quando o pedaço não repete o tema da página
+    print(f"{len(chunks)} chunks from {len({c['url'] for c in chunks})} pages; computing embeddings...", flush=True)
     vecs = embed([f"{c['title']}\n{c['text']}" for c in chunks])
-    index = faiss.IndexFlatIP(vecs.shape[1])  # pesquisa exata; com ~1000 pedaços não é preciso mais
+    index = faiss.IndexFlatIP(vecs.shape[1])
     index.add(vecs)
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
     faiss.write_index(index, str(INDEX_DIR / "text.faiss"))
     with (INDEX_DIR / "chunks.jsonl").open("w", encoding="utf-8") as f:
         for c in chunks:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
-    print(f"Escrito: {INDEX_DIR} ({index.ntotal} vetores de dimensão {vecs.shape[1]})")
+    print(f"Written: {INDEX_DIR} ({index.ntotal} vectors of dimension {vecs.shape[1]})")
 
 
 class TextIndex:
-    """Carrega o índice uma vez e responde a pesquisas."""
+    """Loads the index once and answers searches."""
 
     def __init__(self) -> None:
         self.index = faiss.read_index(str(INDEX_DIR / "text.faiss"))
@@ -103,7 +97,7 @@ def main() -> None:
         build()
     else:
         if not args.query:
-            sys.exit("Indica a pergunta.")
+            sys.exit("Please give a query.")
         for r in TextIndex().search(args.query, args.k):
             print(f"{r['score']:.3f}  [{r['source']}] {r['title']}  ({r['url']})\n       {r['text'][:150]}...")
 

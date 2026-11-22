@@ -1,14 +1,4 @@
-"""Esquema Pydantic da extração: a ontologia vista do lado do LLM.
-
-O LLM recebe um excerto de texto e devolve JSON com este formato. Os tipos `Literal`
-fazem com que só existam as classes, relações e temas da ontologia. Qualquer outra coisa
-é rejeitada pela validação, e o JSON Schema gerado daqui é passado ao Ollama para
-restringir a própria geração (structured outputs).
-
-Fica em dois níveis:
-  1. Pydantic (aqui): forma do JSON, valores permitidos.       -> erro = pedir de novo ao LLM
-  2. SHACL (shapes.ttl): regras sobre o grafo já construído.     -> erro = facto descartado/auditado
-"""
+"""Pydantic schema for the LLM extraction: only ontology classes, relations and topics are allowed."""
 from __future__ import annotations
 
 from typing import List, Literal, Optional
@@ -19,7 +9,6 @@ EntityType = Literal["Product", "Concept", "Cost", "Risk", "Right"]
 RelationType = Literal["hasCost", "hasRisk", "regulatedBy", "relatedTo"]
 RegulatorName = Literal["Banco de Portugal", "CMVM", "ASF"]
 
-# Códigos dos subtemas em kg/topics.ttl (fl:t-<código>)
 TopicCode = Literal[
     "necessidades-desejos", "despesas-rendimentos", "risco-incerteza", "planeamento",
     "meios-pagamento", "contas-bancarias", "emprestimos", "sistema-financeiro", "seguros",
@@ -30,7 +19,6 @@ TopicCode = Literal[
 ]
 
 REGULATOR_IRIS = {"Banco de Portugal": "BancoDePortugal", "CMVM": "CMVM", "ASF": "ASF"}
-# Nomes que NÃO podem ser entidades extraídas: os supervisores já existem na ontologia
 REGULATOR_WORDS = ("banco de portugal", "bdp", "cmvm", "asf", "comissão do mercado de valores",
                    "autoridade de supervisão")
 
@@ -54,13 +42,12 @@ class Extraction(BaseModel):
     relations: List[Relation] = Field(default_factory=list)
 
     def drop_dangling(self) -> List[str]:
-        """Remove relações cujas pontas não existem e devolve avisos.
-        Não rejeitamos a extração toda por causa de uma relação má."""
+        """Drop regulator entities and relations whose endpoints do not exist; return warnings."""
         kept, warnings = [], []
         regulators = [e for e in self.entities
                       if any(w == e.label.strip().lower() or e.label.lower().startswith(w) for w in REGULATOR_WORDS)]
         for e in regulators:
-            warnings.append(f"entidade descartada (é um supervisor): {e.label}")
+            warnings.append(f"entity dropped (it is a regulator): {e.label}")
         self.entities = [e for e in self.entities if e not in regulators]
         labels = {e.label.strip().lower() for e in self.entities}
         for r in self.relations:
@@ -72,6 +59,6 @@ class Extraction(BaseModel):
             if subj_ok and obj_ok:
                 kept.append(r)
             else:
-                warnings.append(f"relação descartada: {r.subject} --{r.relation}--> {r.object}")
+                warnings.append(f"relation dropped: {r.subject} --{r.relation}--> {r.object}")
         self.relations = kept
         return warnings

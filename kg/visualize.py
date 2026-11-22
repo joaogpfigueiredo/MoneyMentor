@@ -1,11 +1,7 @@
-"""Desenha a vizinhança de uma entidade do KG num ficheiro HTML (para mostrar na apresentação).
+"""Draw an entity's KG neighbourhood as an interactive HTML page (vis-network), coloured by class.
 
-Porquê: um grafo percebe-se melhor a ver do que a ler Turtle. O script vai buscar a entidade e
-todos os vizinhos a 1 salto (o mesmo que o chatbot vai usar para responder) e gera uma página com a
-biblioteca vis-network: cada cor é uma classe da ontologia e cada seta tem o nome da relação.
-
-Uso:
-  python -m kg.visualize "seguro de habitação"            # -> data/kg/vis/seguro-de-habitacao.html
+Usage:
+  python -m kg.visualize "seguro de habitação"
   python -m kg.visualize "fundos de pensões" --hops 2
 """
 from __future__ import annotations
@@ -28,7 +24,7 @@ COLORS = {"Product": "#2f6fb0", "Concept": "#7a7a7a", "Cost": "#c0392b", "Risk":
 PAGE = """<!doctype html><html lang="pt"><head><meta charset="utf-8"><title>KG: {title}</title>
 <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
 <style>body{{font-family:sans-serif;margin:0}}#g{{width:100vw;height:92vh}}p{{margin:8px 12px}}</style></head>
-<body><p><b>{title}</b>: {n} nós, {e} ligações. Cores: {legend}</p><div id="g"></div><script>
+<body><p><b>{title}</b>: {n} nodes, {e} links. Colours: {legend}</p><div id="g"></div><script>
 new vis.Network(document.getElementById("g"),{{nodes:new vis.DataSet({nodes}),edges:new vis.DataSet({edges})}},
 {{edges:{{arrows:"to",font:{{size:11,align:"middle"}}}},nodes:{{shape:"dot",size:14,font:{{size:14}}}},physics:{{stabilization:true}}}});
 </script></body></html>"""
@@ -59,7 +55,7 @@ def main() -> None:
         g.parse(f)
     start = entity_iri(args.entity)
     if (start, RDF.type, None) not in g:
-        raise SystemExit(f"Entidade não encontrada: {args.entity}")
+        raise SystemExit(f"Entity not found: {args.entity}")
 
     nodes, edges, frontier = {start}, set(), {start}
     for _ in range(args.hops):
@@ -83,7 +79,7 @@ def main() -> None:
     out.write_text(PAGE.format(title=args.entity, n=len(nodes), e=len(edges), legend=legend,
                                nodes=json.dumps(vis_nodes, ensure_ascii=False),
                                edges=json.dumps(vis_edges, ensure_ascii=False)), encoding="utf-8")
-    print(f"Escrito: {out}  ({len(nodes)} nós, {len(edges)} ligações)")
+    print(f"Written: {out}  ({len(nodes)} nodes, {len(edges)} links)")
     webbrowser.open(out.as_uri())
 
 

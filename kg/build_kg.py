@@ -1,17 +1,9 @@
-"""Constrói o KG a partir das extrações (JSON) e valida-o com SHACL.
+"""Build the RDF KG from the JSON extractions (direct triples + reified provenance) and filter it with SHACL.
 
-Fluxo:
-  extrações JSON  --Pydantic-->  objetos Extraction  --to_rdf-->  grafo RDF
-                  --pySHACL-->   relatório + remoção dos factos inválidos  -->  data/kg/kg.ttl
-
-Cada facto entra duas vezes:
-  1. o triplo em si, para consultar com SPARQL:  kg:credito-habitacao fl:hasCost kg:comissao-de-abertura
-  2. um nó rdf:Statement que descreve esse triplo e diz de onde veio (prov:wasDerivedFrom <url>)
-
-Uso:
-  python -m kg.build_kg                               # usa data/kg/extractions/*.jsonl
-  python -m kg.build_kg --input kg/examples/*.jsonl   # outro conjunto
-  python -m kg.build_kg --no-shacl                    # ablação "sem SHACL"
+Usage:
+  python -m kg.build_kg
+  python -m kg.build_kg --input kg/examples/*.jsonl
+  python -m kg.build_kg --no-shacl
 """
 from __future__ import annotations
 
@@ -37,16 +29,14 @@ KG = Namespace("https://w3id.org/mealheiro/kg/")
 
 
 def slug(text: str) -> str:
-    """'Crédito à Habitação' -> 'credito-a-habitacao'. Duas páginas que falem da mesma
-    coisa com o mesmo nome dão o mesmo IRI: é a nossa resolução de entidades (simples)."""
+    """'Crédito à Habitação' -> 'credito-a-habitacao'."""
     t = unicodedata.normalize("NFKD", text.lower())
     t = "".join(c for c in t if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
 
 
 def singular(word: str) -> str:
-    """Regra grosseira de singular em português (só para comparar nomes, não para mostrar):
-    'pensoes' -> 'pensao', 'anuais' -> 'anual', 'seguros' -> 'seguro'."""
+    """Rough Portuguese singular: 'pensoes' -> 'pensao', 'anuais' -> 'anual', 'seguros' -> 'seguro'."""
     if len(word) <= 3 or not word.endswith("s"):
         return word
     for plural, sing in (("oes", "ao"), ("aes", "ao"), ("ais", "al"), ("eis", "el"), ("res", "r")):
@@ -56,8 +46,7 @@ def singular(word: str) -> str:
 
 
 def entity_iri(label: str) -> URIRef:
-    """IRI de uma entidade: slug com cada palavra no singular. Assim 'fundos de pensões fechados'
-    e 'fundo de pensões fechado' são o mesmo nó (o 1.º label visto fica como rdfs:label)."""
+    """Entity IRI: the label slug with every word singularised, so plural variants share one node."""
     return KG["-".join(singular(w) for w in slug(label).split("-"))]
 
 
@@ -68,10 +57,8 @@ def bind_prefixes(g: Graph) -> None:
     g.bind("prov", PROV)
 
 
-# Extração -> RDF
 def add_fact(g: Graph, s: URIRef, p: URIRef, o, source: URIRef) -> None:
-    """Junta o triplo e o nó rdf:Statement com a fonte. O IRI do Statement é um hash
-    de (s, p, o, fonte): correr duas vezes não duplica nada."""
+    """Add the triple plus an rdf:Statement (hash IRI) linking it to its source."""
     g.add((s, p, o))
     h = hashlib.sha1(f"{s}|{p}|{o}|{source}".encode("utf-8")).hexdigest()[:16]
     st = KG[f"fact/{h}"]
@@ -90,8 +77,7 @@ def add_extraction(g: Graph, ex: Extraction, url: str, warnings: list[str]) -> N
         iri[e.label.strip().lower()] = node
         existing = set(g.objects(node, RDF.type))
         if existing and FL[e.type] not in existing:
-            # Disjunção: uma entidade não pode ser, p.ex., Product e Cost. Fica o 1.º tipo.
-            warnings.append(f"tipo em conflito para {e.label}: {e.type} ignorado (já era {existing.pop().split('#')[-1]})")
+            warnings.append(f"type conflict for {e.label}: {e.type} ignored (already {existing.pop().split('#')[-1]})")
         elif not existing:
             g.add((node, RDF.type, FL[e.type]))
         if not any(g.objects(node, RDFS.label)):
@@ -116,7 +102,7 @@ def add_extraction(g: Graph, ex: Extraction, url: str, warnings: list[str]) -> N
 
 
 def load_extractions(paths: list[str], warnings: list[str]) -> Graph:
-    """Cada linha: {"url": ..., "extraction": {"entities": [...], "relations": [...]}}"""
+    """Each line: {"url": ..., "extraction": {"entities": [...], "relations": [...]}}"""
     g = Graph()
     bind_prefixes(g)
     for path in paths:
@@ -127,24 +113,15 @@ def load_extractions(paths: list[str], warnings: list[str]) -> Graph:
             try:
                 ex = Extraction.model_validate(rec["extraction"])
             except ValidationError as err:
-                warnings.append(f"{Path(path).name}:{n} rejeitado pelo Pydantic: {err.error_count()} erro(s)")
+                warnings.append(f"{Path(path).name}:{n} rejected by Pydantic: {err.error_count()} error(s)")
                 continue
             warnings.extend(ex.drop_dangling())
             add_extraction(g, ex, rec["url"], warnings)
     return g
 
 
-# SHACL
 def shacl_filter(data: Graph) -> tuple[Graph, list[str]]:
-    """Valida com pySHACL e remove o que falhar. Devolve (grafo limpo, linhas do relatório).
-
-    Regra de remoção (simples de explicar):
-      - algo que não é produto com hasCost/hasRisk/regulatedBy: removem-se essas relações;
-      - violação com valor (ex.: hasCost aponta para algo que não é Cost): remove esse triplo;
-      - violação sem valor (ex.: entidade sem label, facto sem fonte): remove o nó inteiro.
-    Os nós rdf:Statement que descreviam triplos removidos também saem. Como remover pode
-    criar violações novas (ex.: entidade que fica sem label), repete-se até conformar.
-    """
+    """Validate with pySHACL and remove failing facts until the graph conforms; return (graph, report lines)."""
     background = Graph().parse(KG_DIR / "ontology.ttl").parse(KG_DIR / "topics.ttl")
     shapes = Graph().parse(KG_DIR / "shapes.ttl")
     clean = Graph()
@@ -164,14 +141,12 @@ def shacl_filter(data: Graph) -> tuple[Graph, list[str]]:
             lines.append(f"- {clean.qname(focus) if isinstance(focus, URIRef) else focus} | "
                          f"{clean.qname(path) if path else '-'} | {value if value is not None else '-'} | {msg}")
             if report.value(result, SH.sourceShape) == FL.ProductOnlyShape:
-                # não-produto com custo/risco/supervisor: a culpa é da relação, não da entidade
                 for p in (FL.hasCost, FL.hasRisk, FL.regulatedBy):
                     clean.remove((focus, p, None))
             elif (focus, RDF.type, RDF.Statement) in clean:
-                # facto mal descrito (ex.: sem fonte): sai o triplo e a sua descrição
                 triple = (clean.value(focus, RDF.subject), clean.value(focus, RDF.predicate),
                           clean.value(focus, RDF.object))
-                if None not in triple:  # nunca remover com None (seria um wildcard!)
+                if None not in triple:
                     clean.remove(triple)
                 clean.remove((focus, None, None))
             elif value is not None and path is not None:
@@ -180,7 +155,6 @@ def shacl_filter(data: Graph) -> tuple[Graph, list[str]]:
                 clean.remove((focus, None, None))
                 clean.remove((None, None, focus))
 
-        # Statements órfãos: o triplo que descreviam já não existe
         for st in list(clean.subjects(RDF.type, RDF.Statement)):
             triple = (clean.value(st, RDF.subject), clean.value(st, RDF.predicate), clean.value(st, RDF.object))
             if None in triple or triple not in clean:
@@ -192,33 +166,33 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--input", nargs="+", default=[str(OUT_DIR / "extractions" / "*.jsonl")])
     ap.add_argument("--output", type=Path, default=OUT_DIR / "kg.ttl")
-    ap.add_argument("--no-shacl", action="store_true", help="ablação: não filtrar com SHACL")
+    ap.add_argument("--no-shacl", action="store_true", help="ablation: skip the SHACL filter")
     args = ap.parse_args()
 
     paths = sorted({p for pattern in args.input for p in glob.glob(pattern)})
     if not paths:
-        print(f"Nenhum ficheiro de extrações em {args.input}")
+        print(f"No extraction files in {args.input}")
         return
     warnings: list[str] = []
     g = load_extractions(paths, warnings)
     n_facts = len(list(g.subjects(RDF.type, RDF.Statement)))
-    print(f"Lidas {len(paths)} ficheiro(s): {len(g)} triplos, {n_facts} factos com fonte")
+    print(f"Read {len(paths)} file(s): {len(g)} triples, {n_facts} sourced facts")
     for w in warnings:
-        print(f"  [aviso] {w}")
+        print(f"  [warning] {w}")
 
     report_lines = []
     if not args.no_shacl:
         g, report_lines = shacl_filter(g)
         kept = len(list(g.subjects(RDF.type, RDF.Statement)))
-        print(f"SHACL: {len(report_lines)} violação(ões); factos mantidos: {kept}/{n_facts}")
+        print(f"SHACL: {len(report_lines)} violation(s); facts kept: {kept}/{n_facts}")
         for line in report_lines:
             print("  " + line)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     g.serialize(args.output, format="turtle")
     report_path = args.output.with_name(args.output.stem + "_shacl_report.txt")
-    report_path.write_text("\n".join(report_lines) or "Sem violações.", encoding="utf-8")
-    print(f"Escrito: {args.output} ({len(g)} triplos) e {report_path.name}")
+    report_path.write_text("\n".join(report_lines) or "No violations.", encoding="utf-8")
+    print(f"Written: {args.output} ({len(g)} triples) and {report_path.name}")
 
 
 if __name__ == "__main__":

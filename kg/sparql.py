@@ -1,12 +1,7 @@
-"""Consultas SPARQL ao KG, iguais no Fuseki e no rdflib (em memória).
+"""SPARQL queries over the KG (Fuseki or in-memory rdflib); ONE_HOP returns an entity's facts with sources.
 
-ONE_HOP devolve, para uma entidade, todos os factos a 1 salto (em que ela é sujeito
-ou objeto) e a página de origem de cada um. É isto que o chatbot dá ao LLM como contexto,
-e é daqui que vêm as citações.
-
-Uso:
-  python -m kg.sparql "seguro multirriscos habitação"                       # rdflib, data/kg/kg.ttl
-  python -m kg.sparql "seguro multirriscos habitação" --kg data/kg/exemplo.ttl
+Usage:
+  python -m kg.sparql "seguro multirriscos habitação"
   python -m kg.sparql "seguro de incêndio" --endpoint http://localhost:3030/mealheiro/sparql
 """
 from __future__ import annotations
@@ -25,7 +20,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 """
 
-# Todas as entidades com o nome e os sinónimos (para o entity linking)
 LABELS = PREFIXES + """
 SELECT ?entity ?type ?label WHERE {
   ?entity a ?type ; rdfs:label|skos:altLabel ?label .
@@ -33,7 +27,6 @@ SELECT ?entity ?type ?label WHERE {
 }
 """
 
-# Factos a 1 salto de uma entidade, com a fonte (via o nó rdf:Statement)
 ONE_HOP = PREFIXES + """
 SELECT ?sLabel ?p ?oLabel ?source WHERE {
   ?st a rdf:Statement ;
@@ -50,7 +43,7 @@ ORDER BY ?p
 
 
 def run(query: str, kg_path: Optional[Path] = None, endpoint: Optional[str] = None) -> list[dict]:
-    """Corre a consulta no Fuseki (se houver endpoint) ou num ficheiro Turtle com o rdflib."""
+    """Run the query on Fuseki (if an endpoint is given) or on a Turtle file with rdflib."""
     if endpoint:
         from SPARQLWrapper import JSON, SPARQLWrapper
         sw = SPARQLWrapper(endpoint)
@@ -64,8 +57,7 @@ def run(query: str, kg_path: Optional[Path] = None, endpoint: Optional[str] = No
 
 
 def find_entity(label: str, **kw) -> Optional[str]:
-    """Correspondência com rdfs:label ou skos:altLabel, ignorando maiúsculas, acentos e plurais
-    (a mesma normalização dos IRIs). O entity linking a sério (texto + embeddings) vem no passo 4."""
+    """Match a name against rdfs:label/skos:altLabel, ignoring case, accents and plurals."""
     from .build_kg import entity_iri
     key = entity_iri(label)
     for r in run(LABELS, **kw):
@@ -76,7 +68,7 @@ def find_entity(label: str, **kw) -> Optional[str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("entity", help="nome da entidade (rdfs:label ou sinónimo)")
+    ap.add_argument("entity", help="entity name (rdfs:label or alias)")
     ap.add_argument("--kg", type=Path, default=Path("data/kg/kg.ttl"))
     ap.add_argument("--endpoint", default=None)
     args = ap.parse_args()
@@ -84,12 +76,12 @@ def main() -> None:
 
     entity = find_entity(args.entity, **kw)
     if not entity:
-        print(f"Entidade não encontrada: {args.entity}")
+        print(f"Entity not found: {args.entity}")
         return
-    print(f"Entidade: {entity}\n")
+    print(f"Entity: {entity}\n")
     q = ONE_HOP.replace("?entity", f"<{entity}>")
     for r in run(q, **kw):
-        print(f"- {r['sLabel']}  {r['p'].split('#')[-1]}  {r['oLabel'][:90]}\n    fonte: {r['source']}")
+        print(f"- {r['sLabel']}  {r['p'].split('#')[-1]}  {r['oLabel'][:90]}\n    source: {r['source']}")
 
 
 if __name__ == "__main__":
