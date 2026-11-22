@@ -1,0 +1,18 @@
+# Apache Jena Fuseki (servidor SPARQL) para o KG do MEALHEIRO.
+#   docker compose up -d                    -> interface em http://localhost:3030 (admin / mealheiro)
+#   python -m kg.load_fuseki                -> carrega ontologia + temas + KG
+# Endpoint SPARQL: http://localhost:3030/mealheiro/sparql
+services:
+  fuseki:
+    image: stain/jena-fuseki:5.1.0
+    container_name: mealheiro-fuseki
+    ports:
+      - "3030:3030"
+    environment:
+      ADMIN_PASSWORD: mealheiro   # só local, para desenvolvimento
+      FUSEKI_DATASET_1: mealheiro
+      JVM_ARGS: "-Xmx1g"
+    volumes:
+      - fuseki-data:/fuseki
+volumes:
+  fuseki-data:

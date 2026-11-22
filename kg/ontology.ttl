@@ -1,0 +1,101 @@
+# MEALHEIRO: ontologia fl: (literacia financeira do consumidor)
+#
+# Pequena de propósito: 6 classes de entidades + Topic (SKOS), 6 relações.
+# A ontologia DESCREVE o vocabulário (OWL/RDFS); quem VERIFICA os dados é o SHACL (shapes.ttl).
+#
+# Proveniência: cada facto (triplo) é também descrito por um nó rdf:Statement
+# (reificação RDF padrão) com prov:wasDerivedFrom <URL da página de origem>.
+
+@prefix fl:   <https://w3id.org/mealheiro/fl#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://w3id.org/mealheiro/fl> a owl:Ontology ;
+    rdfs:label "Ontologia MEALHEIRO de literacia financeira"@pt ;
+    dcterms:creator "João Figueiredo", "Tiago Alves" ;
+    owl:versionInfo "0.1" ;
+    owl:imports <http://www.w3.org/2004/02/skos/core>, <http://www.w3.org/ns/prov-o> .
+
+# Classes
+
+fl:Entity a owl:Class ;
+    rdfs:label "Entidade"@pt ;
+    rdfs:comment "Superclasse de tudo o que é extraído dos textos. Permite dizer 'qualquer entidade' nas relações genéricas."@pt .
+
+fl:Product a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Produto financeiro"@pt ;
+    rdfs:comment "Algo que um consumidor pode contratar: depósito a prazo, crédito habitação, seguro multirriscos, PPR..."@pt .
+
+fl:Concept a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Conceito"@pt ;
+    rdfs:comment "Ideia financeira que não é um produto: inflação, juro composto, spread, Euribor..."@pt .
+
+fl:Cost a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Custo"@pt ;
+    rdfs:comment "Encargo associado a um produto: comissão, prémio, juros, imposto do selo, TAEG..."@pt .
+
+fl:Risk a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Risco"@pt ;
+    rdfs:comment "Algo que pode correr mal ao consumidor: risco de taxa de juro, risco de crédito, perda de capital..."@pt .
+
+fl:Right a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Direito do consumidor"@pt ;
+    rdfs:comment "Direito legal do consumidor: livre resolução, reembolso antecipado, reclamação, serviços mínimos bancários..."@pt .
+
+fl:Regulator a owl:Class ; rdfs:subClassOf fl:Entity ;
+    rdfs:label "Supervisor"@pt ;
+    rdfs:comment "Entidade de supervisão. Lista fechada: os três supervisores financeiros portugueses (indivíduos abaixo)."@pt .
+
+fl:Topic a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "Tema"@pt ;
+    rdfs:comment "Tema ou subtema do Referencial de Educação Financeira (2013), num esquema SKOS (topics.ttl)."@pt .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( fl:Product fl:Concept fl:Cost fl:Risk fl:Right fl:Regulator ) .
+
+# Relações
+
+fl:hasCost a owl:ObjectProperty ;
+    rdfs:label "tem custo"@pt ;
+    rdfs:domain fl:Product ; rdfs:range fl:Cost .
+
+fl:hasRisk a owl:ObjectProperty ;
+    rdfs:label "tem risco"@pt ;
+    rdfs:domain fl:Product ; rdfs:range fl:Risk .
+
+fl:regulatedBy a owl:ObjectProperty ;
+    rdfs:label "supervisionado por"@pt ;
+    rdfs:domain fl:Product ; rdfs:range fl:Regulator .
+
+fl:relatedTo a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "relacionado com"@pt ;
+    rdfs:comment "Ligação genérica entre duas entidades (ex.: crédito habitação ↔ Euribor; produto ↔ direito)."@pt ;
+    rdfs:domain fl:Entity ; rdfs:range fl:Entity .
+
+fl:hasTopic a owl:ObjectProperty ;
+    rdfs:label "tem tema"@pt ;
+    rdfs:domain fl:Entity ; rdfs:range fl:Topic .
+
+fl:definition a owl:DatatypeProperty ;
+    rdfs:label "definição"@pt ;
+    rdfs:comment "Definição em linguagem simples, retirada da fonte (literal @pt)."@pt ;
+    rdfs:domain fl:Entity ; rdfs:range rdf:langString .
+
+# Supervisores (lista fechada)
+
+fl:BancoDePortugal a fl:Regulator ;
+    rdfs:label "Banco de Portugal"@pt ; skos:altLabel "BdP"@pt ;
+    rdfs:seeAlso <https://clientebancario.bportugal.pt/> .
+
+fl:CMVM a fl:Regulator ;
+    rdfs:label "Comissão do Mercado de Valores Mobiliários"@pt ; skos:altLabel "CMVM"@pt ;
+    rdfs:seeAlso <https://www.cmvm.pt/> .
+
+fl:ASF a fl:Regulator ;
+    rdfs:label "Autoridade de Supervisão de Seguros e Fundos de Pensões"@pt ; skos:altLabel "ASF"@pt ;
+    rdfs:seeAlso <https://www.consumidor.asf.com.pt/> .

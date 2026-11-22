@@ -1,0 +1,73 @@
+# Temas do Referencial de Educação Financeira (DGE, ANQEP e CNSF, 2013), Quadro II:
+# 6 temas e 18 subtemas, como esquema SKOS.
+# Fonte: https://www.todoscontam.pt/sites/default/files/SiteCollectionDocuments/ReferencialEducacaoFinanceira.pdf
+#
+# skos:broader liga cada subtema ao seu tema. Os códigos (fl:t-...) são os valores
+# que o LLM pode usar na extração (ver kg/schema.py).
+
+@prefix fl:   <https://w3id.org/mealheiro/fl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+fl:ReferencialEF a skos:ConceptScheme ;
+    skos:prefLabel "Referencial de Educação Financeira"@pt ;
+    dcterms:source <https://www.todoscontam.pt/sites/default/files/SiteCollectionDocuments/ReferencialEducacaoFinanceira.pdf> ;
+    skos:hasTopConcept fl:t-orcamento, fl:t-sistema, fl:t-poupanca, fl:t-credito, fl:t-etica, fl:t-direitos .
+
+# 1. Planeamento e Gestão do Orçamento
+fl:t-orcamento a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Planeamento e Gestão do Orçamento"@pt .
+fl:t-necessidades-desejos a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-orcamento ;
+    skos:prefLabel "Necessidades e Desejos"@pt .
+fl:t-despesas-rendimentos a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-orcamento ;
+    skos:prefLabel "Despesas e Rendimentos"@pt .
+fl:t-risco-incerteza a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-orcamento ;
+    skos:prefLabel "Risco e Incerteza"@pt .
+fl:t-planeamento a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-orcamento ;
+    skos:prefLabel "Planeamento"@pt .
+
+# 2. Sistema e Produtos Financeiros Básicos
+fl:t-sistema a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Sistema e Produtos Financeiros Básicos"@pt .
+fl:t-meios-pagamento a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-sistema ;
+    skos:prefLabel "Meios de Pagamento"@pt .
+fl:t-contas-bancarias a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-sistema ;
+    skos:prefLabel "Contas Bancárias"@pt .
+fl:t-emprestimos a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-sistema ;
+    skos:prefLabel "Empréstimos"@pt .
+fl:t-sistema-financeiro a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-sistema ;
+    skos:prefLabel "Sistema Financeiro"@pt .
+fl:t-seguros a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-sistema ;
+    skos:prefLabel "Seguros"@pt .
+
+# 3. Poupança
+fl:t-poupanca a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Poupança"@pt .
+fl:t-objetivos-poupanca a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-poupanca ;
+    skos:prefLabel "Objetivos da Poupança"@pt .
+fl:t-aplicacoes-poupanca a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-poupanca ;
+    skos:prefLabel "Aplicações da Poupança"@pt .
+
+# 4. Crédito
+fl:t-credito a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Crédito"@pt .
+fl:t-necessidades-capacidades a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-credito ;
+    skos:prefLabel "Necessidades e Capacidades Financeiras"@pt .
+fl:t-custos-credito a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-credito ;
+    skos:prefLabel "Custos do Crédito"@pt .
+fl:t-responsabilidades-credito a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-credito ;
+    skos:prefLabel "Responsabilidades do Crédito"@pt .
+
+# 5. Ética
+fl:t-etica a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Ética"@pt .
+fl:t-etica-responsabilidade a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-etica ;
+    skos:prefLabel "Ética e Responsabilidade Social nas questões financeiras"@pt .
+
+# 6. Direitos e Deveres
+fl:t-direitos a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:topConceptOf fl:ReferencialEF ;
+    skos:prefLabel "Direitos e Deveres"@pt .
+fl:t-informacao-financeira a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-direitos ;
+    skos:prefLabel "Informação Financeira"@pt .
+fl:t-prevencao-fraude a fl:Topic ; skos:inScheme fl:ReferencialEF ; skos:broader fl:t-direitos ;
+    skos:prefLabel "Prevenção de Fraude"@pt .

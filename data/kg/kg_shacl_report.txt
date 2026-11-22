@@ -1,0 +1,88 @@
+- kg:intermediario-de-credito-nao-vinculado | - | https://w3id.org/mealheiro/kg/intermediario-de-credito-nao-vinculado | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:direito-a-reembolsar-antecipadamente-o-emprestimo | - | https://w3id.org/mealheiro/kg/direito-a-reembolsar-antecipadamente-o-emprestimo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:relatorio-de-avaliacao-de-imovel | - | https://w3id.org/mealheiro/kg/relatorio-de-avaliacao-de-imovel | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:incumprimento-de-credito | - | https://w3id.org/mealheiro/kg/incumprimento-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:credito | - | https://w3id.org/mealheiro/kg/credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:instituicao-de-credito | - | https://w3id.org/mealheiro/kg/instituicao-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:formulario-de-informacao-ao-depositante-fid | - | https://w3id.org/mealheiro/kg/formulario-de-informacao-ao-depositante-fid | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:renegociacao-de-credito | - | https://w3id.org/mealheiro/kg/renegociacao-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:taxa-anual-de-encargo-efetiva-global | - | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:segurador | - | https://w3id.org/mealheiro/kg/segurador | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:avaliacao-de-imovel | - | https://w3id.org/mealheiro/kg/avaliacao-de-imovel | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:mudanca-de-conta | - | https://w3id.org/mealheiro/kg/mudanca-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:extrato-de-conta | - | https://w3id.org/mealheiro/kg/extrato-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:renegociacao-de-emprestimo | - | https://w3id.org/mealheiro/kg/renegociacao-de-emprestimo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:central-de-responsabilidade-de-credito | - | https://w3id.org/mealheiro/kg/central-de-responsabilidade-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:reembolso-antecipado | - | https://w3id.org/mealheiro/kg/reembolso-antecipado | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:intermediario-de-credito | - | https://w3id.org/mealheiro/kg/intermediario-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:base-de-dado-de-conta | - | https://w3id.org/mealheiro/kg/base-de-dado-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:encerramento-de-conta | - | https://w3id.org/mealheiro/kg/encerramento-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:garantia-de-deposito | - | https://w3id.org/mealheiro/kg/garantia-de-deposito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:descoberto-bancario | - | https://w3id.org/mealheiro/kg/descoberto-bancario | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:premio-de-seguro | - | https://w3id.org/mealheiro/kg/premio-de-seguro | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:entidade-gestora | - | https://w3id.org/mealheiro/kg/entidade-gestora | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:encargo | - | https://w3id.org/mealheiro/kg/encargo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:encargo-suportado-perante-terceiro | - | https://w3id.org/mealheiro/kg/encargo-suportado-perante-terceiro | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:indemnizacao | - | https://w3id.org/mealheiro/kg/indemnizacao | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:ultrapassagem-de-credito | - | https://w3id.org/mealheiro/kg/ultrapassagem-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:taxa-anual-de-encargo-efetiva-global-taeg | - | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+- kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+- kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro | hasCost tem de apontar para um fl:Cost.
+- kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global | hasCost tem de apontar para um fl:Cost.
+- kg:facilidade-de-descoberto | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/reclamacao | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/prazo-do-emprestimo | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/quadro-de-reembolso | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-publica | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-tan | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso-antecipado | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/documentacao-necessaria | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-exigida | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | hasCost tem de apontar para um fl:Cost.
+- kg:credito-pessoal | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+- kg:credito-pessoal | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-maxima | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo-para-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/montante-maximo-do-emprestimo | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo-para-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-bonificada | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro | hasCost tem de apontar para um fl:Cost.
+- kg:obrigacao | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo-simple | fl:hasCost | https://w3id.org/mealheiro/kg/spread | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo-simple | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-variavel | hasCost tem de apontar para um fl:Cost.
+- kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-rendibilidade-anual | hasCost tem de apontar para um fl:Cost.
+- kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/devolucao-do-valor | hasCost tem de apontar para um fl:Cost.
+- kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/unidade-de-participacao | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/participacao-no-seguro | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao-em-especie | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao-em-dinheiro | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-ordem | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-dos-deposito | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-ordem | fl:hasCost | https://w3id.org/mealheiro/kg/comissao-maxima | hasCost tem de apontar para um fl:Cost.
+- kg:conta-poupanca-reformado | fl:hasCost | https://w3id.org/mealheiro/kg/imposto-sobre-os-juro | hasCost tem de apontar para um fl:Cost.
+- kg:credito-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/seguro-de-vida | hasCost tem de apontar para um fl:Cost.
+- kg:credito-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/comparticipacao | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-liquida-tael | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-dos-deposito | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/capitalizacao-de-juro | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-tae | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso-antecipado | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/prazo-de-reembolso | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-liquida | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-liquida | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-de-deposito | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-de-deposito | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/forma-de-pagamento-de-juro | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/comissao-maxima | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-bruta | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-variavel | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-nominal-anual-bruta-tanb | hasCost tem de apontar para um fl:Cost.
+- kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/spread | hasCost tem de apontar para um fl:Cost.
+- kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/montante-total-imputado-ao-consumidor-mtic | hasCost tem de apontar para um fl:Cost.
+- kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasCost tem de apontar para um fl:Cost.
+- kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/encargo | hasCost tem de apontar para um fl:Cost.
+- kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-anual-nominal-tan | hasCost tem de apontar para um fl:Cost.
+- kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | hasCost tem de apontar para um fl:Cost.
+- kg:credito-automovel | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+- kg:emprestimo | fl:hasRisk | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasRisk tem de apontar para um fl:Risk.
+- kg:emprestimo-para-habitacao | fl:hasRisk | https://w3id.org/mealheiro/kg/hipoteca | hasRisk tem de apontar para um fl:Risk.
+- kg:credito-habitacao | fl:hasRisk | https://w3id.org/mealheiro/kg/justa-causa | hasRisk tem de apontar para um fl:Risk.
+- kg:contrato-de-credito | fl:hasRisk | https://w3id.org/mealheiro/kg/incumprimento | hasRisk tem de apontar para um fl:Risk.

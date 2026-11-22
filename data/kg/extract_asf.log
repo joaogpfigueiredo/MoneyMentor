@@ -1,0 +1,156 @@
+[1/17] Início (1 pedaço(s))
+    pedaço 0: 0 entidades, 0 relações (36s)
+[2/17] ASF associa-se à 2.ª edição da iniciativa “Educar para a Cid (1 pedaço(s))
+    pedaço 0: 2 entidades, 1 relações (50s)
+[3/17] Seguro de Responsabilidade Civil (2 pedaço(s))
+    pedaço 0: 7 entidades, 6 relações (167s)
+    pedaço 1: 0 entidades, 0 relações (5s)
+[4/17] Meios de Resolução de Litígios (2 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (113s)
+    pedaço 1: 4 entidades, 3 relações (85s)
+[5/17] Direito ao Esquecimento (8 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (143s)
+    pedaço 1: 5 entidades, 3 relações (128s)
+    pedaço 2: 4 entidades, 3 relações (99s)
+    pedaço 3: 5 entidades, 3 relações (123s)
+    pedaço 4: 5 entidades, 4 relações (162s)
+    pedaço 5: 5 entidades, 4 relações (128s)
+    pedaço 6: 5 entidades, 4 relações (125s)
+    pedaço 7: 7 entidades, 9 relações (201s)
+[6/17] Campanha de Segurança Digital (1 pedaço(s))
+    pedaço 0: 1 entidades, 0 relações (17s)
+[7/17] Colocação de Seguro Automóvel (1 pedaço(s))
+    pedaço 0: 4 entidades, 2 relações (91s)
+[8/17] Fundos de Pensões (14 pedaço(s))
+    pedaço 0: 13 entidades, 12 relações (315s)
+    pedaço 1: 8 entidades, 6 relações (232s)
+    pedaço 2: 18 entidades, 11 relações (487s)
+    pedaço 3: 5 entidades, 4 relações (143s)
+    pedaço 4: 12 entidades, 9 relações (293s)
+    pedaço 5: 9 entidades, 10 relações (263s)
+    pedaço 6: 9 entidades, 10 relações (226s)
+    pedaço 7: 6 entidades, 4 relações (135s)
+    pedaço 8: 7 entidades, 6 relações (149s)
+    pedaço 9: 7 entidades, 6 relações (196s)
+    pedaço 10: 7 entidades, 6 relações (167s)
+    pedaço 11: 5 entidades, 4 relações (120s)
+    pedaço 12: 8 entidades, 7 relações (204s)
+    pedaço 13: 4 entidades, 3 relações (87s)
+[9/17] Seguro de Habitação (5 pedaço(s))
+    pedaço 0: 22 entidades, 21 relações (454s)
+    pedaço 1: 6 entidades, 5 relações (147s)
+    pedaço 2: 14 entidades, 9 relações (277s)
+    pedaço 3: 9 entidades, 6 relações (206s)
+    pedaço 4: 5 entidades, 5 relações (107s)
+[10/17] Seguro de Acidentes de Trabalho (6 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (122s)
+    pedaço 1: 5 entidades, 4 relações (135s)
+    pedaço 2: 5 entidades, 4 relações (181s)
+    pedaço 3: 5 entidades, 6 relações (132s)
+    pedaço 4: 5 entidades, 3 relações (160s)
+    pedaço 5: 6 entidades, 5 relações (195s)
+[11/17] ASF assinala o Dia Mundial da Poupança com aulas de literaci (2 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (131s)
+    pedaço 1: 5 entidades, 4 relações (127s)
+[12/17] Contrato de Seguro (12 pedaço(s))
+    pedaço 0: 10 entidades, 7 relações (289s)
+    pedaço 1: 8 entidades, 6 relações (197s)
+    pedaço 2: 8 entidades, 5 relações (165s)
+    pedaço 3: 7 entidades, 5 relações (190s)
+Traceback (most recent call last):
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1377, in getresponse
+    response.begin()
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 320, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 281, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=600)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\joaog\AppData\Local\Programs\Python\Python39\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\kg\extract.py", line 197, in <module>
+    main()
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\kg\extract.py", line 184, in main
+    ex = extract_chunk(page["title"], chunk, args.model)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\kg\extract.py", line 138, in extract_chunk
+    raw = call_llm(messages, model)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\kg\extract.py", line 123, in call_llm
+    resp = requests.post(OLLAMA_URL, timeout=600, json={
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\.venv\lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=600)
+exit=1
+[1/17] Início (1 pedaço(s))
+[2/17] ASF associa-se à 2.ª edição da iniciativa “Educar para a Cid (1 pedaço(s))
+[3/17] Seguro de Responsabilidade Civil (2 pedaço(s))
+[4/17] Meios de Resolução de Litígios (2 pedaço(s))
+[5/17] Direito ao Esquecimento (8 pedaço(s))
+[6/17] Campanha de Segurança Digital (1 pedaço(s))
+[7/17] Colocação de Seguro Automóvel (1 pedaço(s))
+[8/17] Fundos de Pensões (14 pedaço(s))
+[9/17] Seguro de Habitação (5 pedaço(s))
+[10/17] Seguro de Acidentes de Trabalho (6 pedaço(s))
+[11/17] ASF assinala o Dia Mundial da Poupança com aulas de literaci (2 pedaço(s))
+[12/17] Contrato de Seguro (12 pedaço(s))
+    [timeout] o modelo demorou demasiado; salto este pedaço
+    pedaço 5: 5 entidades, 3 relações (138s)
+    pedaço 6: 12 entidades, 10 relações (248s)
+    pedaço 7: 7 entidades, 6 relações (148s)
+    pedaço 8: 8 entidades, 7 relações (172s)
+    pedaço 9: 15 entidades, 26 relações (414s)
+    pedaço 10: 7 entidades, 6 relações (170s)
+    pedaço 11: 4 entidades, 3 relações (94s)
+[13/17] Provedor - Seguros (1 pedaço(s))
+    pedaço 0: 7 entidades, 6 relações (182s)
+[14/17] Provedor - Fundos de Pensões (1 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (123s)
+[15/17] Descodificador (1 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (72s)
+[16/17] Seguro de Saúde (3 pedaço(s))
+    pedaço 0: 8 entidades, 6 relações (170s)
+    pedaço 1: 7 entidades, 6 relações (177s)
+    pedaço 2: 10 entidades, 4 relações (193s)
+[17/17] Beneficiários de Seguros de Vida (2 pedaço(s))
+    pedaço 0: 11 entidades, 6 relações (217s)
+    pedaço 1: 5 entidades, 2 relações (91s)
+
+Escrito: C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\data\kg\extractions\asf.jsonl
+A seguir:  python -m kg.build_kg

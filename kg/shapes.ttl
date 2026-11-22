@@ -1,0 +1,97 @@
+# Regras SHACL do KG MEALHEIRO.
+#
+# A ontologia diz o que as coisas SIGNIFICAM; o SHACL diz o que os dados TÊM de cumprir
+# (mundo fechado). Cada regra corresponde a um erro típico de extração com LLM:
+#   - entidade sem nome em português                 -> EntityShape
+#   - custo/risco/supervisor ligado à coisa errada   -> ProductShape (sh:class)
+#   - supervisor inventado                           -> ProductShape (sh:in)
+#   - tema que não existe no Referencial             -> EntityShape (sh:class fl:Topic)
+#   - facto sem fonte                                -> StatementShape
+
+@prefix fl:   <https://w3id.org/mealheiro/fl#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+# Qualquer entidade (produto, conceito, custo, risco, direito)
+fl:EntityShape a sh:NodeShape ;
+    sh:targetClass fl:Product, fl:Concept, fl:Cost, fl:Risk, fl:Right ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "pt" ) ;
+        sh:uniqueLang true ;
+        sh:message "Cada entidade tem exatamente um rdfs:label em português."@pt ;
+    ] ;
+    sh:property [
+        sh:path skos:altLabel ;
+        sh:languageIn ( "pt" ) ;
+    ] ;
+    sh:property [
+        sh:path fl:definition ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "pt" ) ;
+        sh:minLength 20 ;
+        sh:message "A definição tem de ser um texto em português com pelo menos 20 caracteres."@pt ;
+    ] ;
+    sh:property [
+        sh:path fl:hasTopic ;
+        sh:class fl:Topic ;
+        sh:message "O tema tem de ser um dos temas SKOS do Referencial (topics.ttl)."@pt ;
+    ] ;
+    sh:property [
+        sh:path fl:relatedTo ;
+        sh:nodeKind sh:IRI ;
+        sh:class fl:Entity ;
+        sh:message "relatedTo só liga entidades do KG."@pt ;
+    ] ;
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message "Cada entidade indica pelo menos uma página de origem."@pt ;
+    ] .
+
+# Só os produtos têm custos, riscos e supervisor
+fl:ProductShape a sh:NodeShape ;
+    sh:targetClass fl:Product ;
+    sh:property [
+        sh:path fl:hasCost ;
+        sh:class fl:Cost ;
+        sh:message "hasCost tem de apontar para um fl:Cost."@pt ;
+    ] ;
+    sh:property [
+        sh:path fl:hasRisk ;
+        sh:class fl:Risk ;
+        sh:message "hasRisk tem de apontar para um fl:Risk."@pt ;
+    ] ;
+    sh:property [
+        sh:path fl:regulatedBy ;
+        sh:in ( fl:BancoDePortugal fl:CMVM fl:ASF ) ;
+        sh:message "O supervisor tem de ser o Banco de Portugal, a CMVM ou a ASF."@pt ;
+    ] .
+
+# hasCost/hasRisk/regulatedBy usados a partir de algo que NÃO é produto
+fl:ProductOnlyShape a sh:NodeShape ;
+    sh:targetSubjectsOf fl:hasCost, fl:hasRisk, fl:regulatedBy ;
+    sh:class fl:Product ;
+    sh:message "Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy."@pt .
+
+# Cada facto reificado tem de ter fonte
+fl:StatementShape a sh:NodeShape ;
+    sh:targetClass rdf:Statement ;
+    sh:property [ sh:path rdf:subject ;   sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path rdf:predicate ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( fl:hasCost fl:hasRisk fl:regulatedBy fl:relatedTo fl:hasTopic fl:definition ) ] ;
+    sh:property [ sh:path rdf:object ;    sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:pattern "^https?://" ;
+        sh:message "Cada facto tem de ter prov:wasDerivedFrom com o URL de origem."@pt ;
+    ] .

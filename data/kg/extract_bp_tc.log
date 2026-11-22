@@ -1,0 +1,474 @@
+[1/33] Abertura (7 pedaço(s))
+    pedaço 0: 13 entidades, 9 relações (237s)
+    pedaço 1: 11 entidades, 4 relações (230s)
+    pedaço 2: 22 entidades, 21 relações (513s)
+    pedaço 3: 7 entidades, 6 relações (161s)
+    pedaço 4: 5 entidades, 4 relações (94s)
+    pedaço 5: 6 entidades, 4 relações (168s)
+    pedaço 6: 2 entidades, 1 relações (48s)
+[2/33] Atraso no pagamento (2 pedaço(s))
+    pedaço 0: 6 entidades, 4 relações (172s)
+    pedaço 1: 4 entidades, 2 relações (115s)
+[3/33] Avaliação da solvabilidade (4 pedaço(s))
+    pedaço 0: 12 entidades, 13 relações (430s)
+    pedaço 1: 7 entidades, 4 relações (181s)
+    pedaço 2: 9 entidades, 10 relações (336s)
+    [timeout] o modelo demorou demasiado; salto este pedaço
+[4/33] Como contratar (7 pedaço(s))
+    pedaço 0: 6 entidades, 6 relações (187s)
+    pedaço 1: 14 entidades, 16 relações (386s)
+    pedaço 2: 7 entidades, 4 relações (163s)
+    pedaço 3: 7 entidades, 5 relações (149s)
+    [timeout] o modelo demorou demasiado; salto este pedaço
+    pedaço 5: 10 entidades, 11 relações (264s)
+    pedaço 6: 5 entidades, 4 relações (184s)
+[5/33] Como contratar (6 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (137s)
+    pedaço 1: 7 entidades, 6 relações (228s)
+    pedaço 2: 9 entidades, 7 relações (290s)
+    pedaço 3: 8 entidades, 5 relações (255s)
+    pedaço 4: 9 entidades, 10 relações (222s)
+    pedaço 5: 0 entidades, 0 relações (5s)
+[6/33] Como reembolsar (1 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (130s)
+[7/33] Como reembolsar e transferir (4 pedaço(s))
+    pedaço 0: 8 entidades, 5 relações (200s)
+    pedaço 1: 5 entidades, 4 relações (127s)
+    pedaço 2: 4 entidades, 3 relações (116s)
+    pedaço 3: 4 entidades, 2 relações (75s)
+[8/33] Como renegociar (1 pedaço(s))
+    pedaço 0: 6 entidades, 3 relações (149s)
+[9/33] Como renegociar ou reembolsar antecipadamente (2 pedaço(s))
+    pedaço 0: 4 entidades, 2 relações (104s)
+    pedaço 1: 5 entidades, 3 relações (100s)
+[10/33] Direitos e deveres na contratação de crédito (3 pedaço(s))
+    pedaço 0: 8 entidades, 4 relações (184s)
+    pedaço 1: 8 entidades, 7 relações (217s)
+    pedaço 2: 7 entidades, 5 relações (147s)
+[11/33] Direitos e deveres na contratação de depósitos (4 pedaço(s))
+    pedaço 0: 9 entidades, 9 relações (269s)
+    pedaço 1: 7 entidades, 6 relações (209s)
+    pedaço 2: 10 entidades, 9 relações (256s)
+    pedaço 3: 6 entidades, 4 relações (89s)
+[12/33] Encargos (2 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (102s)
+    pedaço 1: 6 entidades, 5 relações (178s)
+[13/33] Encerramento de conta (2 pedaço(s))
+    pedaço 0: 6 entidades, 3 relações (123s)
+    pedaço 1: 6 entidades, 5 relações (131s)
+[14/33] Estruturados (2 pedaço(s))
+    pedaço 0: 7 entidades, 5 relações (166s)
+    pedaço 1: 9 entidades, 5 relações (134s)
+[15/33] Extratos e saldos (2 pedaço(s))
+    pedaço 0: 9 entidades, 8 relações (212s)
+    pedaço 1: 5 entidades, 3 relações (106s)
+[16/33] Garantia de depósitos (4 pedaço(s))
+    [timeout] o modelo demorou demasiado; salto este pedaço
+    pedaço 1: 9 entidades, 7 relações (231s)
+    pedaço 2: 10 entidades, 6 relações (274s)
+    pedaço 3: 6 entidades, 4 relações (177s)
+[17/33] Garantias (3 pedaço(s))
+    pedaço 0: 6 entidades, 4 relações (184s)
+    pedaço 1: 8 entidades, 4 relações (222s)
+    pedaço 2: 4 entidades, 3 relações (100s)
+[18/33] Gestão do incumprimento (4 pedaço(s))
+    pedaço 0: 8 entidades, 7 relações (295s)
+    pedaço 1: 12 entidades, 11 relações (376s)
+    pedaço 2: 11 entidades, 10 relações (338s)
+    pedaço 3: 5 entidades, 4 relações (154s)
+[19/33] Intermediários de crédito — o que são (2 pedaço(s))
+    pedaço 0: 3 entidades, 2 relações (90s)
+    pedaço 1: 6 entidades, 4 relações (192s)
+[20/33] Mudança de conta (6 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (147s)
+    pedaço 1: 8 entidades, 7 relações (184s)
+    pedaço 2: 10 entidades, 9 relações (205s)
+    pedaço 3: 5 entidades, 4 relações (135s)
+    pedaço 4: 6 entidades, 5 relações (160s)
+    pedaço 5: 0 entidades, 0 relações (5s)
+[21/33] O que é (2 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (106s)
+    pedaço 1: 4 entidades, 3 relações (83s)
+[22/33] O que é (2 pedaço(s))
+    pedaço 0: 13 entidades, 12 relações (333s)
+    pedaço 1: 3 entidades, 3 relações (88s)
+[23/33] O que é e diferentes regimes (6 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (221s)
+    pedaço 1: 5 entidades, 3 relações (152s)
+    pedaço 2: 5 entidades, 3 relações (161s)
+    pedaço 3: 7 entidades, 5 relações (218s)
+    pedaço 4: 7 entidades, 5 relações (224s)
+    pedaço 5: 0 entidades, 0 relações (5s)
+[24/33] O que é e tipos de crédito (4 pedaço(s))
+    pedaço 0: 7 entidades, 6 relações (224s)
+    pedaço 1: 8 entidades, 7 relações (180s)
+    pedaço 2: 6 entidades, 3 relações (163s)
+    pedaço 3: 4 entidades, 3 relações (84s)
+[25/33] O que são e tipos de crédito (2 pedaço(s))
+    pedaço 0: 6 entidades, 4 relações (179s)
+    pedaço 1: 8 entidades, 7 relações (191s)
+[26/33] O que são e tipos de depósitos (3 pedaço(s))
+    pedaço 0: 8 entidades, 5 relações (188s)
+    pedaço 1: 6 entidades, 4 relações (144s)
+    pedaço 2: 5 entidades, 3 relações (107s)
+[27/33] Prevenção do incumprimento (3 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (161s)
+    pedaço 1: 7 entidades, 6 relações (198s)
+    pedaço 2: 9 entidades, 6 relações (213s)
+[28/33] Responsabilidades de crédito (3 pedaço(s))
+    pedaço 0: 5 entidades, 3 relações (155s)
+    pedaço 1: 6 entidades, 5 relações (230s)
+    pedaço 2: 6 entidades, 5 relações (134s)
+[29/33] Simples (2 pedaço(s))
+    pedaço 0: 10 entidades, 5 relações (240s)
+    pedaço 1: 13 entidades, 13 relações (411s)
+[30/33] Taxas de juro (3 pedaço(s))
+    pedaço 0: 7 entidades, 5 relações (198s)
+    pedaço 1: 10 entidades, 6 relações (254s)
+    pedaço 2: 5 entidades, 5 relações (186s)
+[31/33] Taxas de juro no crédito aos consumidores (3 pedaço(s))
+    pedaço 0: 11 entidades, 8 relações (384s)
+    pedaço 1: 7 entidades, 6 relações (233s)
+    pedaço 2: 7 entidades, 6 relações (230s)
+[32/33] Taxas de juro no crédito à habitação (4 pedaço(s))
+    pedaço 0: 8 entidades, 7 relações (258s)
+    pedaço 1: 8 entidades, 7 relações (279s)
+    pedaço 2: 11 entidades, 14 relações (465s)
+    pedaço 3: 4 entidades, 3 relações (127s)
+[33/33] Titularidade e movimentação (3 pedaço(s))
+    pedaço 0: 10 entidades, 7 relações (231s)
+    pedaço 1: 7 entidades, 5 relações (203s)
+    pedaço 2: 7 entidades, 5 relações (185s)
+
+Escrito: C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\data\kg\extractions\bportugal.jsonl
+A seguir:  python -m kg.build_kg
+[1/41] Ações (2 pedaço(s))
+    pedaço 0: 10 entidades, 7 relações (206s)
+    pedaço 1: 5 entidades, 4 relações (113s)
+[2/41] Apólice de seguro (2 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (157s)
+    pedaço 1: 0 entidades, 0 relações (6s)
+[3/41] Avaliar os efeitos da inflação (1 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (171s)
+[4/41] Cartão de crédito (1 pedaço(s))
+    pedaço 0: 8 entidades, 4 relações (174s)
+[5/41] Cartões (1 pedaço(s))
+    pedaço 0: 2 entidades, 1 relações (43s)
+[6/41] Cheques (1 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (72s)
+[7/41] Conta de depósito à ordem (1 pedaço(s))
+    pedaço 0: 5 entidades, 3 relações (142s)
+[8/41] Contrair crédito (1 pedaço(s))
+    pedaço 0: 12 entidades, 14 relações (345s)
+[9/41] Contratação à distância (1 pedaço(s))
+    pedaço 0: 5 entidades, 3 relações (150s)
+[10/41] Crédito automóvel (1 pedaço(s))
+    pedaço 0: 8 entidades, 8 relações (268s)
+[11/41] Crédito à habitação (1 pedaço(s))
+    pedaço 0: 3 entidades, 2 relações (74s)
+[12/41] Crédito pessoal (2 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (132s)
+    pedaço 1: 4 entidades, 3 relações (112s)
+[13/41] Cuidados gerais (1 pedaço(s))
+    pedaço 0: 4 entidades, 3 relações (76s)
+[14/41] Cuidados a ter com produtos e serviços bancários (1 pedaço(s))
+    pedaço 0: 4 entidades, 2 relações (65s)
+[15/41] Débitos diretos (1 pedaço(s))
+    pedaço 0: 3 entidades, 2 relações (93s)
+[16/41] Definir objetivos (1 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (134s)
+[17/41] Depósitos a prazo (2 pedaço(s))
+    pedaço 0: 7 entidades, 6 relações (202s)
+    pedaço 1: 8 entidades, 6 relações (208s)
+[18/41] Determinar a situação financeira (1 pedaço(s))
+    pedaço 0: 7 entidades, 4 relações (212s)
+[19/41] Elaborar o orçamento (2 pedaço(s))
+    pedaço 0: 8 entidades, 6 relações (258s)
+    pedaço 1: 5 entidades, 4 relações (125s)
+[20/41] Fazer pagamentos (1 pedaço(s))
+    pedaço 0: 8 entidades, 6 relações (224s)
+[21/41] Fazer um seguro (1 pedaço(s))
+    pedaço 0: 7 entidades, 2 relações (127s)
+[22/41] Fundos de investimento (2 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (142s)
+    pedaço 1: 10 entidades, 9 relações (364s)
+[23/41] Gerir dívidas (2 pedaço(s))
+    pedaço 0: 9 entidades, 6 relações (240s)
+    pedaço 1: 2 entidades, 1 relações (50s)
+[24/41] Identificar rendimentos e despesas (2 pedaço(s))
+    pedaço 0: 11 entidades, 10 relações (347s)
+    pedaço 1: 6 entidades, 3 relações (124s)
+[25/41] Numerário (1 pedaço(s))
+    pedaço 0: 3 entidades, 2 relações (80s)
+[26/41] Obrigações (2 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (157s)
+    pedaço 1: 5 entidades, 4 relações (139s)
+[27/41] Perfil do investidor (3 pedaço(s))
+    pedaço 0: 5 entidades, 4 relações (174s)
+    pedaço 1: 6 entidades, 5 relações (220s)
+    pedaço 2: 6 entidades, 5 relações (210s)
+[28/41] Planear o orçamento familiar (1 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (152s)
+[29/41] Planos de poupança (2 pedaço(s))
+    pedaço 0: 15 entidades, 8 relações (305s)
+    pedaço 1: 3 entidades, 2 relações (77s)
+[30/41] Poupar e investir (2 pedaço(s))
+    pedaço 0: 11 entidades, 7 relações (338s)
+    pedaço 1: 9 entidades, 8 relações (291s)
+[31/41] Prevenir a fraude (1 pedaço(s))
+    pedaço 0: 6 entidades, 5 relações (141s)
+[32/41] Produtos de investimento (1 pedaço(s))
+    pedaço 0: 3 entidades, 1 relações (66s)
+[33/41] Produtos financeiros complexos (2 pedaço(s))
+    pedaço 0: 18 entidades, 6 relações (376s)
+    pedaço 1: 6 entidades, 5 relações (182s)
+[34/41] Riscos dos produtos (3 pedaço(s))
+    pedaço 0: 6 entidades, 6 relações (170s)
+    pedaço 1: 5 entidades, 3 relações (125s)
+    pedaço 2: 3 entidades, 1 relações (77s)
+[35/41] Seguro (1 pedaço(s))
+    pedaço 0: 2 entidades, 1 relações (55s)
+[36/41] Seguros (2 pedaço(s))
+    pedaço 0: 8 entidades, 5 relações (175s)
+    pedaço 1: 0 entidades, 0 relações (6s)
+[37/41] Simulador da poupança (1 pedaço(s))
+    pedaço 0: 10 entidades, 9 relações (237s)
+[38/41] Simulador do orçamento familiar (1 pedaço(s))
+    pedaço 0: 2 entidades, 0 relações (44s)
+[39/41] Tipos de seguro (1 pedaço(s))
+    pedaço 0: 7 entidades, 3 relações (123s)
+[40/41] Transferências (1 pedaço(s))
+    pedaço 0: 6 entidades, 2 relações (117s)
+[41/41] Venda por telefone e internet (1 pedaço(s))
+    pedaço 0: 2 entidades, 1 relações (39s)
+
+Escrito: C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\data\kg\extractions\todoscontam.jsonl
+A seguir:  python -m kg.build_kg
+Lidas 3 ficheiro(s): 24278 triplos, 3567 factos com fonte
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] entidade descartada (é um supervisor):  ASF
+  [aviso] relação descartada: ASF --regulatedBy--> ASF
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] tipo em conflito para incapacidade superior a 60%: Concept ignorado (já era Risk)
+  [aviso] entidade descartada (é um supervisor): Autoridade de Supervisão de Seguros e Fundos de Pensões
+  [aviso] relação descartada: colocação de seguro automóvel --regulatedBy--> Autoridade de Supervisão de Seguros e Fundos de Pensões
+  [aviso] relação descartada: fundos de pensões --hasCost--> prémio de seguro
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] entidade descartada (é um supervisor): autoridade de supervisão competente
+  [aviso] relação descartada: documento informativo --relatedTo--> autoridade de supervisão competente
+  [aviso] relação descartada: fundos de pensões --hasCost--> contribuições
+  [aviso] tipo em conflito para plano de pensões: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): Autoridade de Supervisão de Seguros e Fundos de Pensões
+  [aviso] relação descartada: fundos de pensões --regulatedBy--> Autoridade de Supervisão de Seguros e Fundos de Pensões
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] relação descartada: atendimento direto --relatedTo--> ASF
+  [aviso] tipo em conflito para atendimento direto: Concept ignorado (já era Right)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] tipo em conflito para indemnização: Concept ignorado (já era Cost)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] relação descartada: ASF --relatedTo--> poupança
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] relação descartada: devolução de parte do prémio --relatedTo--> prémio de seguro
+  [aviso] tipo em conflito para reembolso: Concept ignorado (já era Right)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] relação descartada: seguro de saúde --relatedTo--> ASF
+  [aviso] tipo em conflito para comparticipação: Cost ignorado (já era Concept)
+  [aviso] entidade descartada (é um supervisor): ASF
+  [aviso] entidade descartada (é um supervisor): Banco de Portugal
+  [aviso] tipo em conflito para juros: Concept ignorado (já era Cost)
+  [aviso] tipo em conflito para formulário de informação ao depositante (FID): Product ignorado (já era Concept)
+  [aviso] tipo em conflito para documento de informação sobre comissões: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para abertura de conta: Concept ignorado (já era Product)
+  [aviso] relação descartada: contrato de crédito --hasCost--> taxa de esforço
+  [aviso] relação descartada: empréstimo --hasCost--> montante total a reembolsar (mtic)
+  [aviso] relação descartada: empréstimo --hasCost--> montante da prestação
+  [aviso] relação descartada: produto ou serviço financeiro --relatedTo--> taxa de juro
+  [aviso] tipo em conflito para contrato de crédito: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para crédito pessoal: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de crédito: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para reembolso: Concept ignorado (já era Right)
+  [aviso] tipo em conflito para reembolso antecipado: Concept ignorado (já era Right)
+  [aviso] relação descartada: direito a informação durante o contrato --relatedTo--> extrato detalhado
+  [aviso] tipo em conflito para contrato de crédito: Concept ignorado (já era Product)
+  [aviso] relação descartada: documento de informação fundamental (DIF) --relatedTo--> depósito estruturado
+  [aviso] relação descartada: formulário de informação ao depositante (FID) --relatedTo--> proteção dos depósitos
+  [aviso] relação descartada: depósito a prazo --hasCost--> penalização de juros
+  [aviso] tipo em conflito para facilidade de descoberto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para encerramento de conta: Concept ignorado (já era Right)
+  [aviso] tipo em conflito para extrato de conta: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para extrato de comissões: Product ignorado (já era Cost)
+  [aviso] tipo em conflito para facilidade de descoberto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para extrato de comissões: Concept ignorado (já era Cost)
+  [aviso] tipo em conflito para formulário de informação ao depositante (FID): Product ignorado (já era Concept)
+  [aviso] entidade descartada (é um supervisor): banco de portugal
+  [aviso] relação descartada: persistence of credit obligations (PERSI) --regulatedBy--> banco de portugal
+  [aviso] relação descartada: reclamação --relatedTo--> banco de portugal
+  [aviso] entidade descartada (é um supervisor): Banco de Portugal
+  [aviso] tipo em conflito para contrato de crédito: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para serviços mínimos bancários: Right ignorado (já era Concept)
+  [aviso] tipo em conflito para débito direto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para encerramento de conta: Concept ignorado (já era Right)
+  [aviso] tipo em conflito para serviços mínimos bancários: Right ignorado (já era Concept)
+  [aviso] tipo em conflito para crédito aos consumidores: Concept ignorado (já era Product)
+  [aviso] relação descartada: crédito renovável --hasCost--> prémio de seguro
+  [aviso] relação descartada: cartão de crédito --hasCost--> juros
+  [aviso] relação descartada: facilidade de descoberto --hasCost--> juros
+  [aviso] relação descartada: linha de crédito --hasCost--> juros
+  [aviso] relação descartada: conta corrente bancária --hasCost--> juros
+  [aviso] tipo em conflito para crédito aos consumidores: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de crédito: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para juros: Concept ignorado (já era Cost)
+  [aviso] tipo em conflito para crédito aos consumidores: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para ultrapassagem de crédito: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para juros: Concept ignorado (já era Cost)
+  [aviso] tipo em conflito para depósito a prazo: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para incumprimento: Risk ignorado (já era Concept)
+  [aviso] tipo em conflito para incumprimento: Risk ignorado (já era Concept)
+  [aviso] tipo em conflito para serviços mínimos bancários: Right ignorado (já era Concept)
+  [aviso] tipo em conflito para mapa de responsabilidades de crédito: Right ignorado (já era Concept)
+  [aviso] tipo em conflito para ultrapassagem de crédito: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para crédito pessoal: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para crédito automóvel: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para ultrapassagens de crédito: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para conta coletiva: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para crédito aos consumidores: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para conta de depósito à ordem: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): Banco de Portugal
+  [aviso] tipo em conflito para ultrapassagem de crédito: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para prestações: Cost ignorado (já era Concept)
+  [aviso] tipo em conflito para débito direto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para juro: Concept ignorado (já era Cost)
+  [aviso] tipo em conflito para saldo negativo: Risk ignorado (já era Concept)
+  [aviso] tipo em conflito para facilidade de descoberto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para conta de depósito à ordem: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para homebanking: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para débito direto: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para seguro obrigatório: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): comissão do mercado de valores mobiliários
+  [aviso] relação descartada: fundos de investimento --regulatedBy--> comissão do mercado de valores mobiliários
+  [aviso] tipo em conflito para reembolso: Concept ignorado (já era Right)
+  [aviso] tipo em conflito para crédito: Product ignorado (já era Concept)
+  [aviso] tipo em conflito para prestações: Cost ignorado (já era Concept)
+  [aviso] tipo em conflito para incumprimento: Risk ignorado (já era Concept)
+  [aviso] tipo em conflito para reembolso: Cost ignorado (já era Right)
+  [aviso] tipo em conflito para fundos de pensões: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para fundos de investimento mobiliários: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para aplicação financeira: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): comissão do mercado de valores mobiliários
+  [aviso] entidade descartada (é um supervisor): autoridade de supervisão de seguros e fundos de pensões
+  [aviso] relação descartada: plano de poupança reforma --regulatedBy--> comissão do mercado de valores mobiliários
+  [aviso] relação descartada: ppr --regulatedBy--> comissão do mercado de valores mobiliários
+  [aviso] relação descartada: ppr --regulatedBy--> autoridade de supervisão de seguros e fundos de pensões
+  [aviso] relação descartada: certificado de aforro --regulatedBy--> instituto de gestão da tesouraria e do crédito público
+  [aviso] relação descartada: certificado do tesouro --regulatedBy--> instituto de gestão da tesouraria e do crédito público
+  [aviso] tipo em conflito para fundos de investimento: Concept ignorado (já era Product)
+  [aviso] entidade descartada (é um supervisor): cmvm
+  [aviso] relação descartada: produto financeiro complexo --relatedTo--> cmvm
+  [aviso] tipo em conflito para documento informativo: Concept ignorado (já era Product)
+  [aviso] relação descartada: risco de capital --relatedTo--> aplicação financeira
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para fraude: Concept ignorado (já era Risk)
+  [aviso] tipo em conflito para informação falsa: Concept ignorado (já era Risk)
+  [aviso] tipo em conflito para proposta de seguro: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para seguro contributivo: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para seguro não contributivo: Concept ignorado (já era Product)
+  [aviso] relação descartada: homebanking --hasRisk--> risco de fraude
+  [aviso] tipo em conflito para homebanking: Concept ignorado (já era Product)
+  [aviso] tipo em conflito para contrato de seguro: Concept ignorado (já era Product)
+SHACL: 88 violação(ões); factos mantidos: 3462/3567
+  - kg:intermediario-de-credito-nao-vinculado | - | https://w3id.org/mealheiro/kg/intermediario-de-credito-nao-vinculado | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:direito-a-reembolsar-antecipadamente-o-emprestimo | - | https://w3id.org/mealheiro/kg/direito-a-reembolsar-antecipadamente-o-emprestimo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:relatorio-de-avaliacao-de-imovel | - | https://w3id.org/mealheiro/kg/relatorio-de-avaliacao-de-imovel | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:incumprimento-de-credito | - | https://w3id.org/mealheiro/kg/incumprimento-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:credito | - | https://w3id.org/mealheiro/kg/credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:instituicao-de-credito | - | https://w3id.org/mealheiro/kg/instituicao-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:formulario-de-informacao-ao-depositante-fid | - | https://w3id.org/mealheiro/kg/formulario-de-informacao-ao-depositante-fid | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:renegociacao-de-credito | - | https://w3id.org/mealheiro/kg/renegociacao-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:taxa-anual-de-encargo-efetiva-global | - | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:segurador | - | https://w3id.org/mealheiro/kg/segurador | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:avaliacao-de-imovel | - | https://w3id.org/mealheiro/kg/avaliacao-de-imovel | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:mudanca-de-conta | - | https://w3id.org/mealheiro/kg/mudanca-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:extrato-de-conta | - | https://w3id.org/mealheiro/kg/extrato-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:renegociacao-de-emprestimo | - | https://w3id.org/mealheiro/kg/renegociacao-de-emprestimo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:central-de-responsabilidade-de-credito | - | https://w3id.org/mealheiro/kg/central-de-responsabilidade-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:reembolso-antecipado | - | https://w3id.org/mealheiro/kg/reembolso-antecipado | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:intermediario-de-credito | - | https://w3id.org/mealheiro/kg/intermediario-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:base-de-dado-de-conta | - | https://w3id.org/mealheiro/kg/base-de-dado-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:encerramento-de-conta | - | https://w3id.org/mealheiro/kg/encerramento-de-conta | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:garantia-de-deposito | - | https://w3id.org/mealheiro/kg/garantia-de-deposito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:descoberto-bancario | - | https://w3id.org/mealheiro/kg/descoberto-bancario | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:premio-de-seguro | - | https://w3id.org/mealheiro/kg/premio-de-seguro | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:entidade-gestora | - | https://w3id.org/mealheiro/kg/entidade-gestora | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:encargo | - | https://w3id.org/mealheiro/kg/encargo | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:encargo-suportado-perante-terceiro | - | https://w3id.org/mealheiro/kg/encargo-suportado-perante-terceiro | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:indemnizacao | - | https://w3id.org/mealheiro/kg/indemnizacao | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:ultrapassagem-de-credito | - | https://w3id.org/mealheiro/kg/ultrapassagem-de-credito | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:taxa-anual-de-encargo-efetiva-global-taeg | - | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | Só um fl:Product pode ter hasCost, hasRisk ou regulatedBy.
+  - kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+  - kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro | hasCost tem de apontar para um fl:Cost.
+  - kg:cartao-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global | hasCost tem de apontar para um fl:Cost.
+  - kg:facilidade-de-descoberto | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/reclamacao | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/prazo-do-emprestimo | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/quadro-de-reembolso | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-publica | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-tan | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso-antecipado | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/documentacao-necessaria | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-exigida | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | hasCost tem de apontar para um fl:Cost.
+  - kg:credito-pessoal | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+  - kg:credito-pessoal | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-maxima | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo-para-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/montante-maximo-do-emprestimo | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo-para-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-bonificada | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro | hasCost tem de apontar para um fl:Cost.
+  - kg:obrigacao | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo-simple | fl:hasCost | https://w3id.org/mealheiro/kg/spread | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo-simple | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-variavel | hasCost tem de apontar para um fl:Cost.
+  - kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-rendibilidade-anual | hasCost tem de apontar para um fl:Cost.
+  - kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/devolucao-do-valor | hasCost tem de apontar para um fl:Cost.
+  - kg:fundo-de-pensao | fl:hasCost | https://w3id.org/mealheiro/kg/unidade-de-participacao | hasCost tem de apontar para um fl:Cost.
+  - kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/participacao-no-seguro | hasCost tem de apontar para um fl:Cost.
+  - kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao-em-especie | hasCost tem de apontar para um fl:Cost.
+  - kg:seguro-de-acidente-de-trabalho | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao-em-dinheiro | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-ordem | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-dos-deposito | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-ordem | fl:hasCost | https://w3id.org/mealheiro/kg/comissao-maxima | hasCost tem de apontar para um fl:Cost.
+  - kg:conta-poupanca-reformado | fl:hasCost | https://w3id.org/mealheiro/kg/imposto-sobre-os-juro | hasCost tem de apontar para um fl:Cost.
+  - kg:credito-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/seguro-de-vida | hasCost tem de apontar para um fl:Cost.
+  - kg:credito-a-habitacao | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+  - kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/comparticipacao | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-liquida-tael | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-dos-deposito | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/capitalizacao-de-juro | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-tae | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso-antecipado | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/prazo-de-reembolso | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-efetiva-liquida | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-liquida | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/garantia-de-deposito | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/remuneracao-de-deposito | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/forma-de-pagamento-de-juro | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/comissao-maxima | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-nominal-bruta | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-variavel | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-nominal-anual-bruta-tanb | hasCost tem de apontar para um fl:Cost.
+  - kg:deposito-a-prazo | fl:hasCost | https://w3id.org/mealheiro/kg/spread | hasCost tem de apontar para um fl:Cost.
+  - kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/montante-total-imputado-ao-consumidor-mtic | hasCost tem de apontar para um fl:Cost.
+  - kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasCost tem de apontar para um fl:Cost.
+  - kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/encargo | hasCost tem de apontar para um fl:Cost.
+  - kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-de-juro-anual-nominal-tan | hasCost tem de apontar para um fl:Cost.
+  - kg:contrato-de-credito | fl:hasCost | https://w3id.org/mealheiro/kg/taxa-anual-de-encargo-efetiva-global-taeg | hasCost tem de apontar para um fl:Cost.
+  - kg:credito-automovel | fl:hasCost | https://w3id.org/mealheiro/kg/prestacao | hasCost tem de apontar para um fl:Cost.
+  - kg:emprestimo | fl:hasRisk | https://w3id.org/mealheiro/kg/taxa-de-juro-de-mora | hasRisk tem de apontar para um fl:Risk.
+  - kg:emprestimo-para-habitacao | fl:hasRisk | https://w3id.org/mealheiro/kg/hipoteca | hasRisk tem de apontar para um fl:Risk.
+  - kg:credito-habitacao | fl:hasRisk | https://w3id.org/mealheiro/kg/justa-causa | hasRisk tem de apontar para um fl:Risk.
+  - kg:contrato-de-credito | fl:hasRisk | https://w3id.org/mealheiro/kg/incumprimento | hasRisk tem de apontar para um fl:Risk.
+Escrito: C:\Users\joaog\OneDrive\Documentos\MEI\Segundo Ano\Primeiro Semestre\KL\MoneyMentor\data\kg\kg.ttl (23651 triplos) e kg_shacl_report.txt

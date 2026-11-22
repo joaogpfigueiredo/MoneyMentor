@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Dados reprodutíveis ou pesados: não vão para o git
+data/html_cache/
+data/manual_html/**/*.html
+data/manual_html/**/*.htm
+data/manual_html/**/*_files/
+data/index/
+
+# O corpus final (data/raw/*.jsonl) VAI para o git: congela a versão usada na avaliação.
+
+# Saídas de exemplo (regeneráveis)
+data/kg/exemplo*
+data/kg/erros*
+data/kg/vis/

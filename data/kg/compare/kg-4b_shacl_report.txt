@@ -1,0 +1,1 @@
+- kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/comparticipacao-de-sistema-de-seguranca-social | hasCost tem de apontar para um fl:Cost.

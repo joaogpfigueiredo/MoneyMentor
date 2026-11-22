@@ -1,0 +1,331 @@
+@prefix fl: <https://w3id.org/mealheiro/fl#> .
+@prefix kg: <https://w3id.org/mealheiro/kg/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/mealheiro/kg/fact/04e42ee742b8bc6d> a rdf:Statement ;
+    rdf:object "Declaração sobre o estado de saúde do segurado necessária para a celebração do contrato de seguro de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:informacao-sobre-estado-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/0f7fcd72a646595d> a rdf:Statement ;
+    rdf:object "Circunstância clínica presente, suportada num diagnóstico inequívoco, cuja natureza dos sinais e sintomas deveriam ser do conhecimento prévio do segurado, que não ignorou ou já recebeu aviso médico/tratamento antes do início do seguro."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:doencas-preexistentes ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/0fe6c6ef5cc3bde4> a rdf:Statement ;
+    rdf:object "Prazo máximo para reembolsar a pessoa segura após as despesas."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:prazo-maximo-para-reembolso ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/16cc51295ba2888e> a rdf:Statement ;
+    rdf:object fl:t-necessidades-desejos ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:periodo-de-carencia ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/235255ce3ff716ab> a rdf:Statement ;
+    rdf:object "Parte das despesas de saúde que é compartilhada com um sistema de segurança social, sendo coberta apenas a parte não comparticipada pelo seguro."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:comparticipacao-de-sistema-de-seguranca-social ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/296bd88725206612> a rdf:Statement ;
+    rdf:object "Prazo máximo para entregar o pedido de pagamento das despesas, contado a partir da data em que foram realizadas."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:prazo-maximo-para-entrega-do-pedido-de-pagamento ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/2b69274e5cd3b2a9> a rdf:Statement ;
+    rdf:object "Cobre riscos relacionados com a prestação de cuidados de saúde, conforme as coberturas previstas nas condições do contrato, com os limites nelas fixados."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/2fb81f9c977191fa> a rdf:Statement ;
+    rdf:object "Período não superior a um ano para a cobertura de doenças preexistentes, indicado no contrato de seguro de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:periodo-de-carencia ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/3a0a6affcde421b4> a rdf:Statement ;
+    rdf:object "Ação de celebrar um novo contrato de seguro de saúde, mesmo que seja com a mesma empresa de seguros."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:mudanca-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/4201e3871c96d7de> a rdf:Statement ;
+    rdf:object "Valor disponível para cada cobertura do seguro de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:capital-disponivel-para-cada-cobertura ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/581f499008f20032> a rdf:Statement ;
+    rdf:object "Sistema em que a empresa de seguros paga diretamente aos prestadores de serviços com acordo, evitando despesas do segurado."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:sistema-de-pagamento-direto ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/62bcbc887c26ce9f> a rdf:Statement ;
+    rdf:object kg:periodos-de-carencia ;
+    rdf:predicate fl:relatedTo ;
+    rdf:subject kg:mudanca-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/64684aec7a194658> a rdf:Statement ;
+    rdf:object fl:t-informacao-financeira ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:informacao-sobre-estado-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/65791b54a9963390> a rdf:Statement ;
+    rdf:object "Sistema em que o segurado paga apenas a parte não coberta pelo seguro, e a empresa de seguros paga diretamente aos prestadores de serviços."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:pagamento-direto-pela-empresa-de-seguros ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/68c0ccc819793686> a rdf:Statement ;
+    rdf:object kg:informacao-sobre-estado-de-saude ;
+    rdf:predicate fl:relatedTo ;
+    rdf:subject kg:contrato-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/7c4d591ce9f0198b> a rdf:Statement ;
+    rdf:object "Períodos em que o segurado não pode acessar coberturas do seguro de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:periodos-de-carencia ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/80f1cf5fc3a87e26> a rdf:Statement ;
+    rdf:object "Despesas pagas pelo segurado com prestadores de serviços que não tenham acordo com a empresa de seguros, seguidamente compartilhadas pela empresa de seguros."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:reembolso-de-despesas ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/86ca605a997a06f1> a rdf:Statement ;
+    rdf:object fl:t-seguros ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:reembolso-de-despesas ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/967f92b9c009c112> a rdf:Statement ;
+    rdf:object kg:reembolso-de-despesas ;
+    rdf:predicate fl:hasCost ;
+    rdf:subject kg:contrato-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/979220387ba921e5> a rdf:Statement ;
+    rdf:object kg:periodo-de-carencia ;
+    rdf:predicate fl:relatedTo ;
+    rdf:subject kg:contrato-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/9e13d9bce0efbd33> a rdf:Statement ;
+    rdf:object fl:t-seguros ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:sistema-de-pagamento-direto ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/aeaf0ab9134bdfdb> a rdf:Statement ;
+    rdf:object "Regra que permite que a empresa de seguros não recuse prestações de saúde se não estiverem cobertas por um contrato posterior."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:regra-de-nao-recusa-de-prestacoes ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/b4debbf91c7c7e45> a rdf:Statement ;
+    rdf:object fl:t-seguros ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/c1c74a31dac79e9d> a rdf:Statement ;
+    rdf:object "Doenças conhecidas do segurado à data do contrato, que são cobertas pelo seguro se não forem excluídas expressamente."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:doencas-preexistentes ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/c1e445662f9b4f4d> a rdf:Statement ;
+    rdf:object fl:t-seguros ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:contrato-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/c9810613dc5e3ef2> a rdf:Statement ;
+    rdf:object "Valor inicial que o segurado deve pagar por cada cobertura, se existir."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:valor-da-franquia-inicial ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/d3cba36c5cabf103> a rdf:Statement ;
+    rdf:object "Limites de capital para cada cobertura do seguro de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:limites-de-capital ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/e278a02afa9eb922> a rdf:Statement ;
+    rdf:object "Percentagem pagas pela empresa de seguros, que é calculada em função das coberturas contratadas."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:percentagem-maxima-de-comparticipacao ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/e5e15b159fa66d26> a rdf:Statement ;
+    rdf:object fl:t-necessidades-desejos ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:doencas-preexistentes ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/e6af1183db3b3a4e> a rdf:Statement ;
+    rdf:object "Contrato que garante cobertura de doenças preexistentes, com possibilidade de período de carência e regras de informação sobre estado de saúde."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:contrato-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/ea0ffed4938a46be> a rdf:Statement ;
+    rdf:object "Produto que funciona dentro de uma rede de prestadores e permite ao cliente aceder a um conjunto de serviços de saúde a um valor mais reduzido, sem assumir risco por parte da entidade gestora."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:plano-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/f338ba0d192f45d8> a rdf:Statement ;
+    rdf:object "Informação da doença que deve ser comunicada à empresa de seguros nos 30 dias imediatos ao termo do contrato."@pt ;
+    rdf:predicate fl:definition ;
+    rdf:subject kg:informacao-da-doenca ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/f483a94585bc15f3> a rdf:Statement ;
+    rdf:object fl:t-seguros ;
+    rdf:predicate fl:hasTopic ;
+    rdf:subject kg:plano-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/f742a0026a831c7a> a rdf:Statement ;
+    rdf:object kg:plano-de-saude ;
+    rdf:predicate fl:relatedTo ;
+    rdf:subject kg:seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+<https://w3id.org/mealheiro/kg/fact/fc02aa8000ed5231> a rdf:Statement ;
+    rdf:object kg:limites-de-capital ;
+    rdf:predicate fl:relatedTo ;
+    rdf:subject kg:mudanca-de-seguro-de-saude ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> .
+
+kg:capital-disponivel-para-cada-cobertura a fl:Concept ;
+    rdfs:label "capital disponível para cada cobertura"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Valor disponível para cada cobertura do seguro de saúde."@pt .
+
+kg:comparticipacao-de-sistema-de-seguranca-social a fl:Concept ;
+    rdfs:label "comparticipação de sistema de segurança social"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Parte das despesas de saúde que é compartilhada com um sistema de segurança social, sendo coberta apenas a parte não comparticipada pelo seguro."@pt .
+
+kg:informacao-da-doenca a fl:Concept ;
+    rdfs:label "informação da doença"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Informação da doença que deve ser comunicada à empresa de seguros nos 30 dias imediatos ao termo do contrato."@pt .
+
+kg:pagamento-direto-pela-empresa-de-seguros a fl:Concept ;
+    rdfs:label "pagamento direto pela empresa de seguros"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Sistema em que o segurado paga apenas a parte não coberta pelo seguro, e a empresa de seguros paga diretamente aos prestadores de serviços."@pt .
+
+kg:percentagem-maxima-de-comparticipacao a fl:Concept ;
+    rdfs:label "percentagem máxima de comparticipação"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Percentagem pagas pela empresa de seguros, que é calculada em função das coberturas contratadas."@pt .
+
+kg:prazo-maximo-para-entrega-do-pedido-de-pagamento a fl:Concept ;
+    rdfs:label "prazo máximo para entrega do pedido de pagamento"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Prazo máximo para entregar o pedido de pagamento das despesas, contado a partir da data em que foram realizadas."@pt .
+
+kg:prazo-maximo-para-reembolso a fl:Concept ;
+    rdfs:label "prazo máximo para reembolso"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Prazo máximo para reembolsar a pessoa segura após as despesas."@pt .
+
+kg:regra-de-nao-recusa-de-prestacoes a fl:Concept ;
+    rdfs:label "regra de não recusa de prestações"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Regra que permite que a empresa de seguros não recuse prestações de saúde se não estiverem cobertas por um contrato posterior."@pt .
+
+kg:valor-da-franquia-inicial a fl:Concept ;
+    rdfs:label "valor da franquia inicial"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Valor inicial que o segurado deve pagar por cada cobertura, se existir."@pt .
+
+kg:sistema-de-pagamento-direto a fl:Concept ;
+    rdfs:label "sistema de pagamento direto"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Sistema em que a empresa de seguros paga diretamente aos prestadores de serviços com acordo, evitando despesas do segurado."@pt ;
+    fl:hasTopic fl:t-seguros .
+
+kg:doencas-preexistentes a fl:Concept ;
+    rdfs:label "doenças preexistentes"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Circunstância clínica presente, suportada num diagnóstico inequívoco, cuja natureza dos sinais e sintomas deveriam ser do conhecimento prévio do segurado, que não ignorou ou já recebeu aviso médico/tratamento antes do início do seguro."@pt,
+        "Doenças conhecidas do segurado à data do contrato, que são cobertas pelo seguro se não forem excluídas expressamente."@pt ;
+    fl:hasTopic fl:t-necessidades-desejos .
+
+kg:limites-de-capital a fl:Concept ;
+    rdfs:label "limites de capital"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Limites de capital para cada cobertura do seguro de saúde."@pt .
+
+kg:mudanca-de-seguro-de-saude a fl:Concept ;
+    rdfs:label "mudança de seguro de saúde"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Ação de celebrar um novo contrato de seguro de saúde, mesmo que seja com a mesma empresa de seguros."@pt ;
+    fl:relatedTo kg:limites-de-capital,
+        kg:periodos-de-carencia .
+
+kg:periodos-de-carencia a fl:Concept ;
+    rdfs:label "períodos de carência"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Períodos em que o segurado não pode acessar coberturas do seguro de saúde."@pt .
+
+kg:seguro-de-saude a fl:Product ;
+    rdfs:label "seguro de saúde"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Cobre riscos relacionados com a prestação de cuidados de saúde, conforme as coberturas previstas nas condições do contrato, com os limites nelas fixados."@pt ;
+    fl:hasTopic fl:t-seguros ;
+    fl:relatedTo kg:plano-de-saude .
+
+kg:informacao-sobre-estado-de-saude a fl:Concept ;
+    rdfs:label "informação sobre estado de saúde"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Declaração sobre o estado de saúde do segurado necessária para a celebração do contrato de seguro de saúde."@pt ;
+    fl:hasTopic fl:t-informacao-financeira .
+
+kg:periodo-de-carencia a fl:Concept ;
+    rdfs:label "período de carência"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Período não superior a um ano para a cobertura de doenças preexistentes, indicado no contrato de seguro de saúde."@pt ;
+    fl:hasTopic fl:t-necessidades-desejos .
+
+kg:plano-de-saude a fl:Product ;
+    rdfs:label "plano de saúde"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Produto que funciona dentro de uma rede de prestadores e permite ao cliente aceder a um conjunto de serviços de saúde a um valor mais reduzido, sem assumir risco por parte da entidade gestora."@pt ;
+    fl:hasTopic fl:t-seguros .
+
+kg:reembolso-de-despesas a fl:Cost ;
+    rdfs:label "reembolso de despesas"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Despesas pagas pelo segurado com prestadores de serviços que não tenham acordo com a empresa de seguros, seguidamente compartilhadas pela empresa de seguros."@pt ;
+    fl:hasTopic fl:t-seguros .
+
+kg:contrato-de-seguro-de-saude a fl:Product ;
+    rdfs:label "contrato de seguro de saúde"@pt ;
+    prov:wasDerivedFrom <https://www.consumidor.asf.com.pt/seguros/seguro-de-sa%C3%BAde> ;
+    fl:definition "Contrato que garante cobertura de doenças preexistentes, com possibilidade de período de carência e regras de informação sobre estado de saúde."@pt ;
+    fl:hasCost kg:reembolso-de-despesas ;
+    fl:hasTopic fl:t-seguros ;
+    fl:relatedTo kg:informacao-sobre-estado-de-saude,
+        kg:periodo-de-carencia .
+

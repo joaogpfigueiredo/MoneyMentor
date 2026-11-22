@@ -1,0 +1,3 @@
+- kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/declaracao-sobre-estado-de-saude | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/comparticipacao | hasCost tem de apontar para um fl:Cost.
+- kg:seguro-de-saude | fl:hasCost | https://w3id.org/mealheiro/kg/reembolso | hasCost tem de apontar para um fl:Cost.
