@@ -139,6 +139,38 @@ para taxonomias/tesauros.
 
 ### 4.3 Nós e ligações do KG (a pergunta mais provável!)
 
+#### Primeiro, a base: o que é um triplo
+
+Em RDF **tudo** se escreve como **triplos**: frases de três partes, *sujeito – predicado – objeto*.
+
+| Sujeito | Predicado | Objeto | Lê-se |
+|---|---|---|---|
+| `kg:credito-a-habitacao` | `fl:hasCost` | `kg:imposto-do-selo` | "o crédito à habitação tem o custo imposto do selo" |
+| `kg:credito-a-habitacao` | `fl:regulatedBy` | `fl:BancoDePortugal` | "… é supervisionado pelo Banco de Portugal" |
+| `kg:credito-a-habitacao` | `rdf:type` | `fl:Product` | "… é um Product" |
+| `kg:credito-a-habitacao` | `rdfs:label` | `"crédito à habitação"@pt` | "… chama-se 'crédito à habitação'" |
+
+- **IRI**: o identificador global de uma coisa, escrito como um URL. `kg:credito-a-habitacao` é
+  a forma curta de `https://w3id.org/mealheiro/kg/credito-a-habitacao`. Os **prefixos** `kg:`
+  (os nossos dados), `fl:` (a nossa ontologia), `rdf:`, `rdfs:`, `skos:` e `prov:` (vocabulários
+  W3C) só servem para encurtar.
+- **Literal**: um valor de texto ou número, não uma coisa. `"crédito à habitação"@pt` é um texto em
+  português. Um literal só pode ser **objeto**, nunca sujeito: não sai nenhuma seta de um texto.
+- **Do triplo ao grafo**: cada sujeito e cada objeto que é um IRI é um **nó**. Cada triplo entre
+  dois IRIs é uma **seta (ligação)** com o nome do predicado. Um triplo cujo objeto é um literal
+  é um **atributo** do nó, não uma ligação.
+- **Turtle (.ttl)**: o formato de texto em que escrevemos os triplos. `a` quer dizer `rdf:type`,
+  `;` repete o sujeito e `,` repete o sujeito e o predicado. Por isso o exemplo mais abaixo, de 8
+  linhas, são mais de 10 triplos.
+- **Porque é que o ficheiro tem 23651 triplos e só 891 nós?** Cada nó tem vários triplos (tipo,
+  nome, definições, temas, fonte). A maior parte vem da proveniência: cada um dos 3462 factos
+  tem um `rdf:Statement` com 5 triplos (tipo, sujeito, predicado, objeto, fonte).
+
+Frase para dizer: *"Um triplo é um facto. Os IRIs são os nós, os triplos entre IRIs são as
+ligações e os triplos com texto são os atributos dos nós."*
+
+#### Os nós e as ligações do nosso KG
+
 **Nós** (as "bolinhas" do grafo):
 - **891 entidades** extraídas: 552 Concept, 147 Product, 81 Cost, 70 Right, 41 Risk.
 - **3 supervisores** fixos (BdP, CMVM, ASF), definidos na ontologia.
